@@ -1,4 +1,4 @@
 ZS6ERB-Logging
 ==============
 
-Club Logging of QSO's for quick reference
+SARL East Rand Branch Club Logging of QSO's for quick reference
