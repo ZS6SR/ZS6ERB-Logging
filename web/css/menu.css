@@ -33,3 +33,72 @@ nav ul ul a:hover { background-color:#555; }
 #contactCap {
     font-size: 20px;
 }
+
+#holder {
+	position: absolute;   /* leave as "relative" to keep timer centered on 
+				 your page, or change to "absolute" then change
+				 the values of the "top" and "left" properties to 
+				 position the timer */
+	top: -25px;            /* change to position the timer; must also change
+				 position to "absolute" above */
+	/*left: 1010px; */  	      /* change to position the timer; must also change
+				 position to "absolute" above */
+        right: 5px;
+	width: 270px;
+	height: 60px;
+	border: none;
+	margin: 0px auto;
+}
+
+#title, #note {
+	color: red;	      /* this determines the color of the DAYS, HRS, MIN, 
+				 SEC labels under the timer and the color of the 
+				 note that displays after reaching the target date
+				 and time; if using the blue digital images,
+				 change to #52C6FF; for the red images,
+				 change to #FF6666; for the white images,
+				 change to #BBBBBB; for the yellow images,
+				 change to #FFFF00 */
+}
+
+#note {
+	position: relative;
+	top: 6px;
+	height: 20px;
+	width: 260px;
+	margin: 0 auto;
+	padding: 0px;
+	text-align: center; 
+	font-family: Arial; 
+	font-size: 18px;
+	font-weight: bold;    /* options are normal, bold, bolder, lighter */
+	font-style: normal;   /* options are normal or italic */
+	z-index: 1;
+}
+
+.title {
+	border: none;
+	padding: 0px;
+	margin: 0px;
+	width: 30px;
+	text-align: center;
+	font-family: Arial;
+	font-size: 10px;
+	font-weight: normal;    /* options are normal, bold, bolder, lighter */
+	background-color: transparent; 
+}
+
+#timer {
+	position: relative; 
+	top: 0px; 
+	left: 0px; 
+	margin: 5px auto; 
+	text-align: center; 
+	width: 260px;
+	height: 26px;
+	border: none;
+	padding: 10px 5px 20px 5px; 
+	background: #000000;      /* may change to another color, or to "transparent" */
+	border-radius: 20px;
+	box-shadow: 0 0 10px #000000;  /* change to "none" if you don't want a shadow */
+}

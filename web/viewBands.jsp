@@ -4,7 +4,10 @@
     Author     : SeanR
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -22,7 +25,7 @@
     <body class="no-js">
         <jsp:include page="header.jsp" />
         <jsp:include page="menu.jsp" />
-
+        
         <br /><br />
         <% if (session.getAttribute("uGroup") == "7az") { %>
             <jsp:forward page="/BandsController?action=listBands" />

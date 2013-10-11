@@ -1,73 +1,3 @@
-<style type="text/css">				
-#holder {
-	position: absolute;   /* leave as "relative" to keep timer centered on 
-				 your page, or change to "absolute" then change
-				 the values of the "top" and "left" properties to 
-				 position the timer */
-	top: 10px;            /* change to position the timer; must also change
-				 position to "absolute" above */
-	left: 1010px;  	      /* change to position the timer; must also change
-				 position to "absolute" above */
-	width: 270px;
-	height: 60px;
-	border: none;
-	margin: 0px auto;
-}
-
-#title, #note {
-	color: red;	      /* this determines the color of the DAYS, HRS, MIN, 
-				 SEC labels under the timer and the color of the 
-				 note that displays after reaching the target date
-				 and time; if using the blue digital images,
-				 change to #52C6FF; for the red images,
-				 change to #FF6666; for the white images,
-				 change to #BBBBBB; for the yellow images,
-				 change to #FFFF00 */
-}
-
-#note {
-	position: relative;
-	top: 6px;
-	height: 20px;
-	width: 260px;
-	margin: 0 auto;
-	padding: 0px;
-	text-align: center; 
-	font-family: Arial; 
-	font-size: 18px;
-	font-weight: bold;    /* options are normal, bold, bolder, lighter */
-	font-style: normal;   /* options are normal or italic */
-	z-index: 1;
-}
-
-.title {
-	border: none;
-	padding: 0px;
-	margin: 0px;
-	width: 30px;
-	text-align: center;
-	font-family: Arial;
-	font-size: 10px;
-	font-weight: normal;    /* options are normal, bold, bolder, lighter */
-	background-color: transparent; 
-}
-
-#timer {
-	position: relative; 
-	top: 0px; 
-	left: 0px; 
-	margin: 5px auto; 
-	text-align: center; 
-	width: 260px;
-	height: 26px;
-	border: none;
-	padding: 10px 5px 20px 5px; 
-	background: #000000;      /* may change to another color, or to "transparent" */
-	border-radius: 20px;
-	box-shadow: 0 0 10px #000000;  /* change to "none" if you don't want a shadow */
-}
-</style>
-
 <script type="text/javascript">		
 /*
     Count down until any date script-
@@ -81,7 +11,7 @@ var note="Contest is Over!";	/* -->Enter what you want the script to
 				      display when the target date and time 
 				      are reached, limit to 25 characters */
 var year=2013;      /* -->Enter the count down target date YEAR */
-var month=10;       /* -->Enter the count down target date MONTH */
+var month=11;       /* -->Enter the count down target date MONTH */
 var day=11;         /* -->Enter the count down target date DAY */
 var hour=6;         /* -->Enter the count down target date HOUR (24 hour clock) */
 var minute=12;      /* -->Enter the count down target date MINUTE */
@@ -185,29 +115,3 @@ function convert(d,h,m,s) {
 	}
 }
 </script>
-
-<div id="holder">
-    <div id="timer">
-        <div id="note"></div>
-        <div id="countdown">
-            <img height=21 src="digital-numbers/bkgd.gif" width=16 name="day1">
-            <img height=21 src="digital-numbers/bkgd.gif" width=16 name="day2">
-            <img height=21 src="digital-numbers/bkgd.gif" width=16 name="day3">
-            <img height=21 id="colon1" src="digital-numbers/colon.png" width=9 name="d1">
-            <img height=21 src="digital-numbers/bkgd.gif" width=16 name="h1">
-            <img height=21 src="digital-numbers/bkgd.gif" width=16 name="h2">
-            <img height=21 id="colon2" src="digital-numbers/colon.png" width=9 name="g1">
-            <img height=21 src="digital-numbers/bkgd.gif" width=16 name="m1">
-            <img height=21 src="digital-numbers/bkgd.gif" width=16 name="m2">
-            <img height=21 id="colon3" src="digital-numbers/colon.png" width=9 name="j1">
-            <img height=21 src="digital-numbers/bkgd.gif" width=16 name="s1">
-            <img height=21 src="digital-numbers/bkgd.gif" width=16 name="s2">
-            <div id="title">
-                    <div class="title" style="position: absolute; top: 36px; left: 58px">DAYS</div>
-                    <div class="title" style="position: absolute; top: 36px; left: 104px">HRS</div>
-                    <div class="title" style="position: absolute; top: 36px; left: 156px">MIN</div>
-                    <div class="title" style="position: absolute; top: 36px; left: 205px">SEC</div>
-            </div>
-        </div>
-    </div>
-</div>

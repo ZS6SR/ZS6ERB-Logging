@@ -2,7 +2,37 @@
     <table border="0" width="100%">
         <tr>
             <td class="headerImg" rowspan="2" style="width: 40px;"><div align=left><a href="http://zs6erb.co.za/"><img src="resources/zs6erb-logo.png" width="80"/></a></div></td>
-            <td class="headerTitle" style="height: 80px;">ZS6ERB - Logging Portal</td>
+            <!-- <td class="headerTitle" style="height: 80px;"> -->
+            <td class="headerTitle" style="height: 80px;">
+                <div style="position: relative;">
+                    ZS6ERB - Logging Portal
+                    <div id="holder">
+                        <div id="timer">
+                            <div id="note"></div>
+                            <div id="countdown">
+                                <img height=21 src="digital-numbers/bkgd.gif" width=16 name="day1">
+                                <img height=21 src="digital-numbers/bkgd.gif" width=16 name="day2">
+                                <img height=21 src="digital-numbers/bkgd.gif" width=16 name="day3">
+                                <img height=21 id="colon1" src="digital-numbers/colon.png" width=9 name="d1">
+                                <img height=21 src="digital-numbers/bkgd.gif" width=16 name="h1">
+                                <img height=21 src="digital-numbers/bkgd.gif" width=16 name="h2">
+                                <img height=21 id="colon2" src="digital-numbers/colon.png" width=9 name="g1">
+                                <img height=21 src="digital-numbers/bkgd.gif" width=16 name="m1">
+                                <img height=21 src="digital-numbers/bkgd.gif" width=16 name="m2">
+                                <img height=21 id="colon3" src="digital-numbers/colon.png" width=9 name="j1">
+                                <img height=21 src="digital-numbers/bkgd.gif" width=16 name="s1">
+                                <img height=21 src="digital-numbers/bkgd.gif" width=16 name="s2">
+                                <div id="title">
+                                        <div class="title" style="position: absolute; top: 36px; left: 58px">DAYS</div>
+                                        <div class="title" style="position: absolute; top: 36px; left: 104px">HRS</div>
+                                        <div class="title" style="position: absolute; top: 36px; left: 156px">MIN</div>
+                                        <div class="title" style="position: absolute; top: 36px; left: 205px">SEC</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
         </tr>
         <tr>
             <%

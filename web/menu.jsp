@@ -7,7 +7,7 @@
                 <ul>
                     <li><a href="ContactController?action=listContacts" title="AllContacts">All Contacts</a></li>
                     <li><a href="report_1.jsp" title="Report2">Report 2</a></li>
-                    <li class="last"><a href="report_1.jsp" title="Report4">Report 4</a></li>
+                    <li class="last"><a href="report_1.jsp" title="Report4">Report 3</a></li>
                 </ul>
             </li>
         <% } 
@@ -24,4 +24,5 @@
                 </li>
         <% } %>
     </ul>
+    
 </nav>

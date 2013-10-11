@@ -26,6 +26,7 @@
         <jsp:include page="header.jsp" />
         <jsp:include page="menu.jsp" />
         <jsp:include page="countdown.jsp" />
+        
         <br /><br />
         <form method="POST" action='BandsController' name="frmAddBand">
             <table border="0" style="padding: 3px;">

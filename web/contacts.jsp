@@ -99,6 +99,7 @@
         <jsp:include page="header.jsp" />
         <jsp:include page="menu.jsp" />
         <jsp:include page="countdown.jsp" />
+        
         <br />
         <form method="POST" action='ContactController' name="frmAddContact">
             <table style="border-width: 0px; border: hidden; width: 70%;">

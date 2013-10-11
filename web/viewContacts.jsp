@@ -26,6 +26,7 @@
         <jsp:include page="header.jsp" />
         <jsp:include page="menu.jsp" />
         <jsp:include page="countdown.jsp" />
+        
         <table style="border-collapse: collapse; background-color: #C2D1E0;" width="100%" >
             <thead>
                 <tr style="border: 1px solid #999; background-color: #C2D1E0;">
