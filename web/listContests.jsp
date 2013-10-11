@@ -16,6 +16,8 @@
         <link rel="stylesheet" href="css/menu.css">
         <link rel="stylesheet" href="css/buttons.css">
         <script src="sj/jquery.js"></script>
+        <script src="sj/jquery-ui.js"></script>
+        <link rel="stylesheet" href="css/jquery-ui.css">
         <script src="sj/modernizr.js"></script>
         
         <!--[if IE]>
@@ -34,8 +36,8 @@
                 <tr style="background-color: #C2D1E0;">
                     <th style="width: 50px;">Id</th>
                     <th style="width: 100px;">Contest Name</th>
-                    <th style="width: 100px;">Start Date</th>
-                    <th style="width: 100px;">End Date</th>
+                    <th style="width: 150px;">Start Date</th>
+                    <th style="width: 150px;">End Date</th>
                     <th colspan=2 style="width: 200px;">Action</th>
                 </tr>
             </thead>

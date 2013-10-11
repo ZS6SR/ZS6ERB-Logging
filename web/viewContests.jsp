@@ -13,6 +13,8 @@
         <link rel="stylesheet" href="css/menu.css">
         <link rel="stylesheet" href="css/buttons.css">
         <script src="sj/jquery.js"></script>
+        <script src="sj/jquery-ui.js"></script>
+        <link rel="stylesheet" href="css/jquery-ui.css">
         <script src="sj/modernizr.js"></script>
 
         <!--[if IE]>

@@ -11,28 +11,25 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" type="text/css" href="css/epoch_styles.css" />
+<script type="text/javascript" src="sj/epoch_classes.js"></script>
+<script type="text/javascript">
+/*You can also place this code in a separate file and link to it like epoch_classes.js*/
+	var bas_cal,dp_cal,ms_cal;      
+window.onload = function () {
+
+	dp_cal  = new Epoch('epoch_popup','popup',document.getElementById('popup_container'));
+	
+};
+</script>
+
     </head>
     <body>
         <h1>Hello World!</h1><br />
-        <% UserDao ud = new UserDao(); %> 
-        Pass = Bob;
-        Get Encrypted Pass = <% ud.getEncryptedPassword("zs6sr", ud.generateSalt()); %>
+        <h2>Popup</h2>
+<form id="placeholder" method="get" action="#">
+  <input id="popup_container" type="text" />
+</form>
+
     </body>
 </html>
-
-
--- FROM newContacts.Detail.jsp
-<%
-                    BigDecimal f = new BigDecimal(7.180);
-                    BandDao bd = new BandDao();
-                    List<Band> bands = bd.getAllBands();
-
-                    for (Band eachBand: bands) {
-                        int s = f.compareTo(eachBand.getStartBand());
-                        int e = f.compareTo(eachBand.getEndBand());
-                        if ( ((s == 0) || (s == 1)) && ((e == 0) || (e == -1)) ) {
-                            %>alert("BAND must be: " + <%=eachBand.getband()%> );<%
-                        }
-                    }
-                        
-                %>

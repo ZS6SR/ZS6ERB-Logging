@@ -6,6 +6,10 @@ package za.co.zs6erb.controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -59,10 +63,27 @@ public class ContestsController extends HttpServlet {
     //When adding a new record or updating an existing record
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Contest contest = new Contest();
-        contest.setcontestName(request.getParameter("contestName"));
         
-        //contest.setStartDate(new BigDecimal(request.getParameter("StartBand")));
-        //contest.setEndBand(new BigDecimal(request.getParameter("EndBand")));
+        Timestamp tsDate = null;
+        Timestamp teDate = null;
+        
+        SimpleDateFormat formatter; //Example: 2012-03-04 23:11:32
+        formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm");
+        
+        Date sDate, eDate;
+        try {
+            sDate = formatter.parse(request.getParameter("contestStartDate"));
+            eDate = formatter.parse(request.getParameter("contestEndDate"));
+            tsDate = new Timestamp(sDate.getTime());
+            teDate = new Timestamp(eDate.getTime());
+            
+        } catch (ParseException ex) {
+            System.out.println("ERROR Parsing startdate " + ex.getMessage());
+        }
+        
+        contest.setcontestName(request.getParameter("contestName"));
+        contest.setstartDate(tsDate);
+        contest.setendDate(teDate);
         
         String contest_id = request.getParameter("contest_id");
         if (contest_id == null || contest_id.isEmpty()) {

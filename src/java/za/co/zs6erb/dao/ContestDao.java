@@ -109,5 +109,29 @@ public class ContestDao {
         }
 
         return lCont;
-    }    
+    }
+    
+//    public Contest getInAContest() {
+//        Contest lCont = new Contest();
+//        
+//        
+//        
+//        try {
+//            PreparedStatement preparedStatement = connection.
+//                    prepareStatement("select * from contest where contest_id=?");
+//            preparedStatement.setInt(1, contest_id);
+//            ResultSet rs = preparedStatement.executeQuery();
+//
+//            if (rs.next()) {
+//                lCont.setID(rs.getInt("contest_id"));
+//                lCont.setcontestName(rs.getString("contestName"));
+//                lCont.setstartDate(rs.getTimestamp("contest_startdate"));
+//                lCont.setendDate(rs.getTimestamp("contest_enddate"));
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return lCont;
+//    }
 }
