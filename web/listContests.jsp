@@ -46,8 +46,8 @@
                     <tr>
                         <td><c:out value="${b.ID}" /></td>
                         <td style="text-align: center;"><c:out value="${b.contestName}" /></td>
-                        <td style="text-align: center;"><c:out value="${b.startDate}" /></td>
-                        <td style="text-align: center;"><c:out value="${b.endDate}" /></td>
+                        <td style="text-align: center;"><c:out value="${b.startDateStr}" /></td>
+                        <td style="text-align: center;"><c:out value="${b.endDateStr}" /></td>
                         <td style="text-align: center;"><a href="ContestsController?action=edit&contest_id=<c:out value="${b.ID}" />">Update</a></td>
                         <td style="text-align: center;"><a href="ContestsController?action=delete&contest_id=<c:out value="${b.ID}" />">Delete</a></td>
                     </tr>
