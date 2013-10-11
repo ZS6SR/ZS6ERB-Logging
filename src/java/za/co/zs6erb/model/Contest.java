@@ -1,6 +1,6 @@
 package za.co.zs6erb.model;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  *
@@ -9,8 +9,8 @@ import java.sql.Timestamp;
 public class Contest {
     private int contest_id;
     private String contestName;
-    private Timestamp startDate;
-    private Timestamp endDate;
+    private Date startDate;
+    private Date endDate;
     
     public int getID() { return contest_id; }
     public void setID(int contest_id) { this.contest_id = contest_id; }
@@ -18,11 +18,11 @@ public class Contest {
     public String getcontestName() { return contestName; }
     public void setcontestName(String contestName) { this.contestName = contestName; }
     
-    public Timestamp getstartDate() { return startDate; }
-    public void setstartDate(Timestamp startDate) { this.startDate = startDate; }
+    public Date getstartDate() { return startDate; }
+    public void setstartDate(Date startDate) { this.startDate = startDate; }
     
-    public Timestamp getendDate() { return endDate; }
-    public void setendDate(Timestamp endDate) { this.endDate = endDate; }
+    public Date getendDate() { return endDate; }
+    public void setendDate(Date endDate) { this.endDate = endDate; }
 
     @Override
     public String toString() {

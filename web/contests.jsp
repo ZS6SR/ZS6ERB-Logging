@@ -23,8 +23,8 @@
         <script src="sj/modernizr.js"></script>
         <script>
             $(function() {
-                $( "#contestStartDate" ).datetimepicker({dateFormat: 'dd-M-yy', timeFormat: "HH:mm"});
-                $( "#contestEndDate" ).datetimepicker({dateFormat: 'dd-M-yy', timeFormat: "HH:mm"});
+                $( "#contestStartDate" ).datetimepicker({dateFormat: 'yy-mm-dd', timeFormat: "HH:mm"});
+                $( "#contestEndDate" ).datetimepicker({dateFormat: 'yy-mm-dd', timeFormat: "HH:mm"});
             });
         </script>
             
@@ -49,11 +49,11 @@
                 </tr>
                 <tr>
                     <td style="text-align: right; width: 150px;">Start Date :</td>
-                    <td style="width: 180px;"><input type="text" name="contestStartDate" id="contestStartDate" value="<c:out value="${contest.contestStartDate}" />" /></td>
+                    <td style="width: 180px;"><input type="text" name="contestStartDate" id="contestStartDate" value="<c:out value="${contest.startDate}" />" /></td>
                 </tr>
                 <tr>
                     <td style="text-align: right; width: 150px;">End Date :</td>
-                    <td style="width: 180px;"><input type="text" name="contestEndDate" id="contestEndDate" value="<c:out value="${contest.contestEndDate}" />" /></td>
+                    <td style="width: 180px;"><input type="text" name="contestEndDate" id="contestEndDate" value="<c:out value="${contest.endDate}" />" /></td>
                 </tr>
                 <tr>
                     <td colspan="2">&nbsp;</td>

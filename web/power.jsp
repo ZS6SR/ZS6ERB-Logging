@@ -34,7 +34,7 @@
                     <td style="width: 250px;"><input type="text" readonly="readonly" name="power_id" value="<c:out value="${power.ID}" />" /></td>
                 </tr>
                 <tr>
-                    <td style="text-align: right; width: 150px;">Band :</td>
+                    <td style="text-align: right; width: 150px;">Power :</td>
                     <td style="width: 250px;"><input type="text" name="power" value="<c:out value="${power.power}" />" /></td>
                 </tr>
                 <tr>

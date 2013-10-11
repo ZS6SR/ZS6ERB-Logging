@@ -5,8 +5,6 @@
 package za.co.zs6erb.controller;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -62,30 +60,32 @@ public class ContestsController extends HttpServlet {
 
     //When adding a new record or updating an existing record
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
         Contest contest = new Contest();
         
-        Timestamp tsDate = null;
-        Timestamp teDate = null;
+        //TODO: Check that the end date is after the start date otherwise return error
         
         SimpleDateFormat formatter; //Example: 2012-03-04 23:11:32
-        formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm");
+        formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        System.out.println("Start Date:" + request.getParameter("contestStartDate"));
         
         Date sDate, eDate;
         try {
             sDate = formatter.parse(request.getParameter("contestStartDate"));
             eDate = formatter.parse(request.getParameter("contestEndDate"));
-            tsDate = new Timestamp(sDate.getTime());
-            teDate = new Timestamp(eDate.getTime());
-            
+            contest.setstartDate(sDate);
+            contest.setendDate(eDate);
         } catch (ParseException ex) {
             System.out.println("ERROR Parsing startdate " + ex.getMessage());
+            RequestDispatcher view = request.getRequestDispatcher(LIST_CONTESTS);
+            request.setAttribute("contests", dao.getAllContests());
+            view.forward(request, response);
         }
         
         contest.setcontestName(request.getParameter("contestName"));
-        contest.setstartDate(tsDate);
-        contest.setendDate(teDate);
         
         String contest_id = request.getParameter("contest_id");
+        
         if (contest_id == null || contest_id.isEmpty()) {
             dao.addContest(contest);
         } else {
