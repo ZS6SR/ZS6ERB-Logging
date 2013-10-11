@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import za.co.zs6erb.model.Contest;
@@ -94,7 +95,7 @@ public class ContestDao {
         Contest lCont = new Contest();
         try {
             PreparedStatement preparedStatement = connection.
-                    prepareStatement("select * from contest where contest_id=?");
+                    prepareStatement("select * from contests where contest_id=?");
             preparedStatement.setInt(1, contest_id);
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -111,27 +112,29 @@ public class ContestDao {
         return lCont;
     }
     
-//    public Contest getInAContest() {
-//        Contest lCont = new Contest();
-//        
-//        
-//        
-//        try {
-//            PreparedStatement preparedStatement = connection.
-//                    prepareStatement("select * from contest where contest_id=?");
-//            preparedStatement.setInt(1, contest_id);
-//            ResultSet rs = preparedStatement.executeQuery();
-//
-//            if (rs.next()) {
-//                lCont.setID(rs.getInt("contest_id"));
-//                lCont.setcontestName(rs.getString("contestName"));
-//                lCont.setstartDate(rs.getTimestamp("contest_startdate"));
-//                lCont.setendDate(rs.getTimestamp("contest_enddate"));
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return lCont;
-//    }
+    public int getcurrentContestID() {
+        
+        int ContestID = 0;
+        
+        
+        java.util.Date date= new java.util.Date();
+        Timestamp tNow = new Timestamp(date.getTime());
+        
+        
+        try {
+            PreparedStatement preparedStatement = connection.
+                    prepareStatement("select contest_id from contests where contest_startDate < ? and contest_enddate > ?");
+            preparedStatement.setTimestamp(1, tNow);
+            preparedStatement.setTimestamp(2, tNow);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                ContestID = rs.getInt("contest_id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ContestID;
+    }
 }

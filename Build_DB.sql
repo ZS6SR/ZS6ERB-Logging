@@ -137,8 +137,8 @@ DROP TABLE IF EXISTS `contacts`;
 CREATE TABLE `contacts` (
   `contact_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `start_time` timestamp NOT NULL,
-  `end_time` timestamp NOT NULL,
+  `start_time` datetime NOT NULL,
+  `end_time` datetime NOT NULL,
   `callsign` varchar(15) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL,
   `location` varchar(50) DEFAULT NULL,
@@ -169,8 +169,8 @@ DROP TABLE IF EXISTS `contests`;
 CREATE TABLE `contests` (
   `contest_id` int(11) NOT NULL AUTO_INCREMENT,
   `contest_name` varchar(50) DEFAULT NULL,
-  `contest_startdate` timestamp NOT NULL,
-  `contest_enddate` timestamp NOT NULL,
+  `contest_startdate` datetime NOT NULL,
+  `contest_enddate` datetime NOT NULL,
   `contest_start_qso` int (11) DEFAULT NULL,
   PRIMARY KEY (`contest_id`),
   UNIQUE KEY `contest_id_UNIQUE` (`contest_id`)

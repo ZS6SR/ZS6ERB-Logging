@@ -49,11 +49,11 @@
                 </tr>
                 <tr>
                     <td style="text-align: right; width: 150px;">Start Date :</td>
-                    <td style="width: 180px;"><input type="text" name="contestStartDate" id="contestStartDate" /></td>
+                    <td style="width: 180px;"><input type="text" name="contestStartDate" id="contestStartDate" value="<c:out value="${contest.contestStartDate}" />" /></td>
                 </tr>
                 <tr>
                     <td style="text-align: right; width: 150px;">End Date :</td>
-                    <td style="width: 180px;"><input type="text" name="contestEndDate" id="contestEndDate" /></td>
+                    <td style="width: 180px;"><input type="text" name="contestEndDate" id="contestEndDate" value="<c:out value="${contest.contestEndDate}" />" /></td>
                 </tr>
                 <tr>
                     <td colspan="2">&nbsp;</td>
