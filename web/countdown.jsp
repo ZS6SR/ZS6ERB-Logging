@@ -7,18 +7,34 @@
 CHANGE THE ITEMS BELOW TO CREATE YOUR COUNTDOWN TARGET DATE AND ANNOUNCEMENT 
 ONCE THE TARGET DATE AND TIME ARE REACHED.
 */
-var note="Contest is Over!";	/* -->Enter what you want the script to 
-				      display when the target date and time 
-				      are reached, limit to 25 characters */
-var year=2013;      /* -->Enter the count down target date YEAR */
-var month=11;       /* -->Enter the count down target date MONTH */
-var day=11;         /* -->Enter the count down target date DAY */
-var hour=6;         /* -->Enter the count down target date HOUR (24 hour clock) */
-var minute=12;      /* -->Enter the count down target date MINUTE */
+var note="No Contest At Present!";	/* -->Enter what you want the script to 
+				              display when the target date and time 
+				              are reached, limit to 25 characters */
+<%@page import="za.co.zs6erb.model.Contest"%>
+<%@page import="za.co.zs6erb.dao.ContestDao"%>
+<%
+    //Look for active contest
+    ContestDao cdao = new ContestDao();
+    int contId = cdao.getcurrentContestID();
+    System.out.println("ContestID = " + contId);
+    
+    if (contId > 0) {
+        Contest contest = cdao.getContestById(contId);
+%>
+    
+var year=<%=contest.getEndYear()%>;      /* -->Enter the count down target date YEAR */
+var month=<%=contest.getEndMonth()%>;       /* -->Enter the count down target date MONTH */
+var day=<%=contest.getEndDay()%>;         /* -->Enter the count down target date DAY */
+var hour=<%=contest.getEndHour()%>;         /* -->Enter the count down target date HOUR (24 hour clock) */
+var minute=<%=contest.getEndMin()%>;      /* -->Enter the count down target date MINUTE */
 
 var tz=+2;          /* -->Offset for your timezone in hours from UTC (see 
 			  http://wwp.greenwichmeantime.com/index.htm to find 
 			  the timezone offset for your location) */
+<%
+    }
+    else {
+%> document.getElementById("holder").style.display="none" <% } %>
 
 //-->    DO NOT CHANGE THE CODE BELOW!    <--	
 d1 = new Image(); d1.src = "digital-numbers/1.png";

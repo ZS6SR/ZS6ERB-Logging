@@ -63,37 +63,43 @@ public class ContestsController extends HttpServlet {
         
         Contest contest = new Contest();
         
-        //TODO: Check that the end date is after the start date otherwise return error
-        
         SimpleDateFormat formatter; //Example: 2012-03-04 23:11:32
         formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        System.out.println("Start Date:" + request.getParameter("contestStartDate"));
         
         Date sDate, eDate;
         try {
             sDate = formatter.parse(request.getParameter("contestStartDate"));
             eDate = formatter.parse(request.getParameter("contestEndDate"));
-            contest.setstartDate(sDate);
-            contest.setendDate(eDate);
+            
+            if (sDate.before(eDate)) {
+                contest.setstartDate(sDate);
+                contest.setendDate(eDate);
+                
+                contest.setcontestName(request.getParameter("contestName"));
+        
+                String contest_id = request.getParameter("contest_id");
+
+                if (contest_id == null || contest_id.isEmpty()) {
+                    dao.addContest(contest);
+                } else {
+                    contest.setID(Integer.parseInt(contest_id));
+                    dao.updateContest(contest);
+                }
+                RequestDispatcher view = request.getRequestDispatcher(LIST_CONTESTS);
+                request.setAttribute("contests", dao.getAllContests());
+                view.forward(request, response);
+            }
+            else {
+                System.out.println("Startdate:" + sDate.toString() + "Cannot be AFTER endDate:" + eDate.toString());
+                RequestDispatcher view = request.getRequestDispatcher(LIST_CONTESTS);
+                request.setAttribute("contests", dao.getAllContests());
+                view.forward(request, response);
+            }
         } catch (ParseException ex) {
             System.out.println("ERROR Parsing startdate " + ex.getMessage());
             RequestDispatcher view = request.getRequestDispatcher(LIST_CONTESTS);
             request.setAttribute("contests", dao.getAllContests());
             view.forward(request, response);
         }
-        
-        contest.setcontestName(request.getParameter("contestName"));
-        
-        String contest_id = request.getParameter("contest_id");
-        
-        if (contest_id == null || contest_id.isEmpty()) {
-            dao.addContest(contest);
-        } else {
-            contest.setID(Integer.parseInt(contest_id));
-            dao.updateContest(contest);
-        }
-        RequestDispatcher view = request.getRequestDispatcher(LIST_CONTESTS);
-        request.setAttribute("contests", dao.getAllContests());
-        view.forward(request, response);
     }
 }

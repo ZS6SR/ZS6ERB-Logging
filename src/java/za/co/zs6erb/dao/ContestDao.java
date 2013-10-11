@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import za.co.zs6erb.model.Contest;
@@ -118,27 +119,26 @@ public class ContestDao {
         return lCont;
     }
     
-//    public int getcurrentContestID() {
-//        
-//        int ContestID = 0;
-//        
-//        
-//        java.util.Date date= new java.util.Date();
-//        
-//        try {
-//            PreparedStatement preparedStatement = connection.
-//                    prepareStatement("select contest_id from contests where contest_startDate < ? and contest_enddate > ?");
-//            preparedStatement.setDate(1, date);
-//            preparedStatement.setDate(2, date);
-//            ResultSet rs = preparedStatement.executeQuery();
-//
-//            if (rs.next()) {
-//                ContestID = rs.getInt("contest_id");
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return ContestID;
-//    }
+    public int getcurrentContestID() {
+        
+        int ContestID = 0;
+        java.util.Date date = new java.util.Date();
+        java.sql.Timestamp sqlNowTime   = new java.sql.Timestamp(date.getTime());
+        
+        try {
+            PreparedStatement preparedStatement = connection.
+                    prepareStatement("select contest_id from contests where contest_startDate < ? and contest_enddate > ?");
+            preparedStatement.setTimestamp(1, sqlNowTime);
+            preparedStatement.setTimestamp(2, sqlNowTime);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                ContestID = rs.getInt("contest_id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ContestID;
+    }
 }

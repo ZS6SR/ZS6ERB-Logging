@@ -23,10 +23,10 @@
                                 <img height=21 src="digital-numbers/bkgd.gif" width=16 name="s1">
                                 <img height=21 src="digital-numbers/bkgd.gif" width=16 name="s2">
                                 <div id="title">
-                                        <div class="title" style="position: absolute; top: 36px; left: 58px">DAYS</div>
+                                        <div class="title" style="position: absolute; top: 36px; left: 50px">DAYS</div>
                                         <div class="title" style="position: absolute; top: 36px; left: 104px">HRS</div>
-                                        <div class="title" style="position: absolute; top: 36px; left: 156px">MIN</div>
-                                        <div class="title" style="position: absolute; top: 36px; left: 205px">SEC</div>
+                                        <div class="title" style="position: absolute; top: 36px; left: 161px">MIN</div>
+                                        <div class="title" style="position: absolute; top: 36px; left: 220px">SEC</div>
                                 </div>
                             </div>
                         </div>

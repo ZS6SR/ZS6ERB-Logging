@@ -35,6 +35,31 @@ public class Contest {
         return dt.format(endDate);
     }
     
+    public String getEndYear() {
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy");
+        return dt.format(endDate);
+    }
+    
+    public String getEndMonth() {
+        SimpleDateFormat dt = new SimpleDateFormat("MM");
+        return dt.format(endDate);
+    }
+    
+    public String getEndDay() {
+        SimpleDateFormat dt = new SimpleDateFormat("dd");
+        return dt.format(endDate);
+    }
+    
+    public String getEndHour() {
+        SimpleDateFormat dt = new SimpleDateFormat("HH");
+        return dt.format(endDate);
+    }
+    
+    public String getEndMin() {
+        SimpleDateFormat dt = new SimpleDateFormat("mm");
+        return dt.format(endDate);
+    }
+    
     @Override
     public String toString() {
         return "Contest [contest_id=" + contest_id + ", Contest Name=" + contestName + ", Start Date=" + startDate + 
