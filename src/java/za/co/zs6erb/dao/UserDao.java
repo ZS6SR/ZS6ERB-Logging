@@ -51,13 +51,14 @@ public class UserDao {
         
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("insert into users(callsign, firstname, lastname, pwd, pwd_) values (?,?,?,?,?)");
+                    .prepareStatement("insert into users(callsign, firstname, lastname, role, pwd, pwd_) values (?,?,?,?,?,?)");
             // Parameters start with 1
             preparedStatement.setString(1, usr.getcallSign());
             preparedStatement.setString(2, usr.getfirstName());
             preparedStatement.setString(3, usr.getlastName());
-            preparedStatement.setString(4, za.co.zs6erb.util.Base64.encodeBytes(pwd));
-            preparedStatement.setString(5, za.co.zs6erb.util.Base64.encodeBytes(salt));
+            preparedStatement.setInt(4, usr.getrole());
+            preparedStatement.setString(5, za.co.zs6erb.util.Base64.encodeBytes(pwd));
+            preparedStatement.setString(6, za.co.zs6erb.util.Base64.encodeBytes(salt));
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -86,7 +87,7 @@ public class UserDao {
             salt = generateSalt();
             pwd = getEncryptedPassword(usr.getpwd() ,salt);
             
-            System.out.println("salt:" + za.co.zs6erb.util.Base64.encodeBytes(salt) + " pwd:" + za.co.zs6erb.util.Base64.encodeBytes(pwd));
+            //System.out.println("salt:" + za.co.zs6erb.util.Base64.encodeBytes(salt) + " pwd:" + za.co.zs6erb.util.Base64.encodeBytes(pwd));
         } catch (NoSuchAlgorithmException ex) {
             System.out.println("**ERROR - " + ex.getMessage());
         } catch (InvalidKeySpecException kex) {
@@ -122,6 +123,7 @@ public class UserDao {
                 usr.setfirstName(rs.getString("firstname"));
                 usr.setlastName(rs.getString("lastname"));
                 usr.setrole(rs.getInt("role"));
+                usr.setuserSince(rs.getTimestamp("userSince"));
                 usrList.add(usr);
             }
         } catch (SQLException e) {

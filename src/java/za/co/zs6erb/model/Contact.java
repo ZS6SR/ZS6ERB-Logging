@@ -1,5 +1,6 @@
 package za.co.zs6erb.model;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -20,7 +21,6 @@ public class Contact {
     private String notes;
     private String name;
     private String location;
-           
     
     public int getID() { return contact_id; }
     public void setID(int contact_id) { this.contact_id = contact_id; }
@@ -63,6 +63,16 @@ public class Contact {
     
     public String getlocation() { return location; }
     public void setlocation(String location) { this.location = location; }
+    
+    public String getstartTimeStr() {
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return dt.format(startTime);
+    }
+    
+    public String getendTimeStr() {
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return dt.format(endTime);
+    }
     
     @Override
     public String toString() {

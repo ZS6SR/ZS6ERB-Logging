@@ -102,7 +102,7 @@ public class ContactController extends HttpServlet {
         
         SimpleDateFormat formatter; //Example: 2012-03-04 23:11:32
         
-        formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date sDate;
         try {
             sDate = formatter.parse(request.getParameter("startTime"));

@@ -44,7 +44,7 @@ public class SummaryDao {
         try {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("select users.callsign, count(*) as count from contacts " +
-                                                    "inner join users on contacts.user_id=users.user_id\n" +
+                                                    "inner join users on contacts.user_id=users.user_id " +
                                                     "group by users.callsign order by count desc");
             if (rs.first()) {
                 topUser = rs.getString("callsign");
@@ -62,7 +62,7 @@ public class SummaryDao {
         try {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("select users.callsign, count(*) as count from contacts " +
-                                                    "inner join users on contacts.user_id=users.user_id\n" +
+                                                    "inner join users on contacts.user_id=users.user_id " +
                                                     "group by users.callsign order by count desc");
             if (rs.first()) {
                 tQSO = rs.getInt(2);

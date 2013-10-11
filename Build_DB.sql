@@ -88,6 +88,7 @@ CREATE TABLE `users` (
   `pwd` varchar(50) DEFAULT NULL,
   `pwd_` varchar(50) DEFAULT NULL,
   `role` int(11) DEFAULT 1,
+  `userSince` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `callsign_UNIQUE` (`callsign`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
@@ -99,7 +100,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'ZS6ERB','ERB','ERB','SVw5O/WdNsoFp11NmxsuOlMKnEY=','q3ND0bxW7dQ=', '7'),(2,'ZS6FDX','Francois','Reyneke','FVUaQEdFnSZhlsPcuY2424SA8DA=','xY6fI/mur9w=','7'),(3,'ZS6SR','Sean','Riley','gkBHpcSwUYa6g6vUvxOveZ6oOuQ=','emNnQJLEqds=','1');
+INSERT INTO `users` VALUES (1,'ZS6ERB','ERB','ERB','SVw5O/WdNsoFp11NmxsuOlMKnEY=','q3ND0bxW7dQ=', '7', ''),(2,'ZS6FDX','Francois','Reyneke','FVUaQEdFnSZhlsPcuY2424SA8DA=','xY6fI/mur9w=','7', ''),(3,'ZS6SR','Sean','Riley','gkBHpcSwUYa6g6vUvxOveZ6oOuQ=','emNnQJLEqds=','1', '');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 

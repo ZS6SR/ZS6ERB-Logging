@@ -5,6 +5,7 @@
 package za.co.zs6erb.controller;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -63,6 +64,13 @@ public class UsersController extends HttpServlet {
         usr.setcallSign(request.getParameter("callsign"));
         usr.setfirstName(request.getParameter("firstname"));
         usr.setlastName(request.getParameter("lastname"));
+        usr.setlastName(request.getParameter("lastname"));
+        usr.setrole(Integer.parseInt(request.getParameter("userType")));
+        
+        java.util.Date date = new java.util.Date();
+        Timestamp uDate = new Timestamp(date.getTime());
+        usr.setuserSince(uDate);
+        
         usr.setpwd(request.getParameter("pwd"));
         
         if (usrid.isEmpty() || usrid.isEmpty()) {

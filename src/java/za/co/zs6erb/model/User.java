@@ -4,6 +4,9 @@
  */
 package za.co.zs6erb.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author SeanR
@@ -15,6 +18,7 @@ public class User {
     private String lastname;
     private String pwd;
     private int role;
+    private Date userSince;
     
     public int getID() { return user_id; }
     public void setID(int user_id) { this.user_id = user_id; }
@@ -34,9 +38,17 @@ public class User {
     public int getrole() { return role; }
     public void setrole(int role) { this.role = role; }
     
+    public Date getuserSince() { return userSince; }
+    public void setuserSince(Date userSince) { this.userSince = userSince; }
+    
+    public String getusString() {
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return dt.format(userSince);
+    }
+    
     @Override
     public String toString() {
         return "Users [user_id=" + user_id + ", Callsign=" + callsign + ", First Name=" + firstname + ", Last Name=" + lastname + 
-                " pwd=" + pwd + " role=" + role + "]";
+                " pwd=" + pwd + " role=" + role + " userSince=" + userSince + "]";
     } 
 }
