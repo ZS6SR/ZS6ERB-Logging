@@ -1,0 +1,19 @@
+.container {
+    display: table;
+    width: 1200px;
+}
+.row  {
+    display: table-row;
+}
+.one {
+    display: table-cell;
+    padding-left: 10px;
+    padding-right: 1px;    
+}
+.two, .three, .four, .five, .six, .seven, .eight {
+    display: table-cell;
+    padding-right: 1px;
+}
+.one p, .two p, .three p, .four p, .five p, .six p, .seven p, .eight p {
+    margin: 1px 1px;
+}
