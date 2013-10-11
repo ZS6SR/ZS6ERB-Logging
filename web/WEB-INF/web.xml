@@ -17,8 +17,8 @@
         <servlet-class>za.co.zs6erb.controller.PowerController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ContactController</servlet-name>
-        <servlet-class>za.co.zs6erb.controller.ContactController</servlet-class>
+        <servlet-name>QSOController</servlet-name>
+        <servlet-class>za.co.zs6erb.controller.QSOController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ContestsController</servlet-name>
@@ -41,8 +41,8 @@
         <url-pattern>/PowerController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ContactController</servlet-name>
-        <url-pattern>/ContactController</url-pattern>
+        <servlet-name>QSOController</servlet-name>
+        <url-pattern>/QSOController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ContestsController</servlet-name>

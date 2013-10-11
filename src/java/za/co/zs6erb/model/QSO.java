@@ -6,8 +6,8 @@ import java.text.SimpleDateFormat;
  *
  * @author SeanR
  */
-public class Contact {
-    private int contact_id;
+public class QSO {
+    private int qso_id;
     private int user_id; 
     private Timestamp startTime;
     private Timestamp endTime;
@@ -22,8 +22,8 @@ public class Contact {
     private String name;
     private String location;
     
-    public int getID() { return contact_id; }
-    public void setID(int contact_id) { this.contact_id = contact_id; }
+    public int getID() { return qso_id; }
+    public void setID(int qso_id) { this.qso_id = qso_id; }
     
     public int getuserID() { return user_id; }
     public void setuserID(int user_id) { this.user_id = user_id; }
@@ -76,7 +76,7 @@ public class Contact {
     
     @Override
     public String toString() {
-        return "Contact [contact_id=" + contact_id + ", User ID=" + user_id + ", Start Time=" + startTime + ", End Time=" + endTime + ", Callsign=" + callsign + 
+        return "QSO [qso_id=" + qso_id + ", User ID=" + user_id + ", Start Time=" + startTime + ", End Time=" + endTime + ", Callsign=" + callsign + 
                 ", BandID=" + bandId + ", ModeID=" + modeId + ", PowerID=" + powerId +", localRST=" + localRST + 
                 ", remoteRST=" + remoteRST + ", notes=" + notes + ", Name=" + name + "location=" + location + 
                 "]";

@@ -2,10 +2,10 @@
     <ul>
         <li><a href="index.jsp" title="Home">Home</a></li>
         <% if ((session.getAttribute("uGroup") == "7za") || (session.getAttribute("uGroup") == "7az")) { %>
-            <li><a href="ContactController?action=new" title="contact">New Contact</a></li>
+            <li><a href="QSOController?action=new" title="qso">New QSO</a></li>
             <li><a href="#" title="Reports">Reports</a>
                 <ul>
-                    <li><a href="ContactController?action=listContacts" title="AllContacts">All Contacts</a></li>
+                    <li><a href="QSOController?action=listQSOs" title="AllQSOs">All QSOs</a></li>
                     <li><a href="report_1.jsp" title="Report2">Report 2</a></li>
                     <li class="last"><a href="report_1.jsp" title="Report4">Report 3</a></li>
                 </ul>

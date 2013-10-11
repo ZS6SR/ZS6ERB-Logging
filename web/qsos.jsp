@@ -1,5 +1,5 @@
 <%-- 
-    Document   : allContactsDetail.jsp
+    Document   : allQSOsDetail.jsp
     Created on : 02 Sep 2013, 2:40:48 PM
     Author     : Seanr
 --%>
@@ -55,7 +55,6 @@
                 
                 
                 $("#freq").change(function() {
-                    
                     var bandArray = ${bd};
                     var bandName  = "Not a Valid Frequency";
                     var bandId    = "1";
@@ -79,7 +78,6 @@
             });
 
             function myStartTime() {
-                
                 var now = new Date();
                 var datetime = now.getUTCFullYear() 
                     + "/" + (((now.getUTCMonth()+1) < 10) ? ("0" + (now.getUTCMonth()+1)) : now.getUTCMonth()+1) 
@@ -101,21 +99,21 @@
         <jsp:include page="countdown.jsp" />
         
         <br />
-        <form method="POST" action='ContactController' name="frmAddContact">
+        <form method="POST" action='QSOController' name="frmAddQSO">
             <table style="border-width: 0px; border: hidden; width: 70%;">
                 <tr>
-                    <td id="contactCap" style="width: 200px; text-align: right;">Frequency&nbsp;</td>
+                    <td id="qsoCap" style="width: 200px; text-align: right;">Frequency&nbsp;</td>
                     <td style="width: 10px;">&nbsp;</td>
                     <td style="width: 200px;"><input type="text" id="freq" name="freq" tabindex="1" style="width:200px; border: solid #C0C0C0; font-size:20px; padding: 4px;"></td>
                 </tr><tr>
-                    <td id="contactCap" style="width: 200px; text-align: right;">Band&nbsp;</td>
+                    <td id="qsoCap" style="width: 200px; text-align: right;">Band&nbsp;</td>
                     <td style="width: 10px;">&nbsp;</td>
                     <td>
                         <input type="text" id="band" name="band" readonly style="width:200px; border: solid #C0C0C0; font-size:18px; padding: 4px;">
                         <input type="hidden" id="bandid" name="bandid" value="1" />
                     </td>
                 </tr><tr>
-                    <td id="contactCap" style="width: 200px; text-align: right;">Mode&nbsp;</td>
+                    <td id="qsoCap" style="width: 200px; text-align: right;">Mode&nbsp;</td>
                     <td style="width: 10px;">&nbsp;</td>
                     <td><select name="modeid" id="modeid" tabindex="2" style="font-size: 18px; width:200px; border: hidden; padding: 4px;">
                             <c:forEach items="${modes.getAllModes()}" var="eachMode" >
@@ -124,7 +122,7 @@
                         </select>
                     </td>
                 </tr><tr>
-                    <td id="contactCap" style="width: 200px; text-align: right;">Callsign&nbsp;</td>
+                    <td id="qsoCap" style="width: 200px; text-align: right;">Callsign&nbsp;</td>
                     <td style="width: 10px;">&nbsp;</td>
                     <td><input type="text" id="callsign" name="callsign" tabindex="3" style="width:200px; border: solid #C0C0C0; font-size:20px; padding: 4px;"></td>
                 </tr><tr>
@@ -132,13 +130,13 @@
                     <td style="width: 10px;">&nbsp;</td>
                     <td><input type="text" id="startTime" name="startTime" readonly style="width:200px; border: solid #C0C0C0; font-size:18px; text-align: center; padding: 4px;"></td>
                 </tr><tr>
-                    <td id="contactCap" style="width: 200px; text-align: right;">Name&nbsp;</td>
+                    <td id="qsoCap" style="width: 200px; text-align: right;">Name&nbsp;</td>
                     <td style="width: 10px;">&nbsp;</td>
                     <td><input type="text" id="name" name="name" tabindex="5" style="width:200px; border: solid #C0C0C0; font-size:20px; padding: 4px;"></td>
                 </tr><tr>
-                    <td id="contactCap" style="width: 200px; text-align: right;">Local (My) RST&nbsp;</td>
+                    <td id="qsoCap" style="width: 200px; text-align: right;">Local (My) RST&nbsp;</td>
                     <td style="width: 10px;">&nbsp;</td>
-                    <td id="contactCap" style="width: 200px; text-align: left;">
+                    <td id="qsoCap" style="width: 200px; text-align: left;">
                         <select name="localR" id="localR">
                             <c:forEach var="i" begin="1" end="4">
                                 <option value="${i}">${i}</option>
@@ -159,9 +157,9 @@
                         </select>
                     </td>
                 </tr><tr>
-                    <td id="contactCap" style="width: 200px; text-align: right;">Remote (His) RST&nbsp;</td>
+                    <td id="qsoCap" style="width: 200px; text-align: right;">Remote (His) RST&nbsp;</td>
                     <td style="width: 10px;">&nbsp;</td>
-                    <td id="contactCap" style="width: 200px; text-align: left;">
+                    <td id="qsoCap" style="width: 200px; text-align: left;">
                         <select name="remoteR" id="remoteR">
                             <c:forEach var="i" begin="1" end="4">
                                 <option value="${i}">${i}</option>
@@ -182,7 +180,7 @@
                             </select>
                     </td>
                 </tr><tr>
-                    <td id="contactCap" style="width: 200px; text-align: right;">Location (QTH)&nbsp;</td>
+                    <td id="qsoCap" style="width: 200px; text-align: right;">Location (QTH)&nbsp;</td>
                     <td style="width: 10px;">&nbsp;</td>
                     <td><input type="text" id="qth" name="qth" tabindex="6" style="width:200px; border: solid #C0C0C0; font-size:20px; padding: 4px;"></td>
                 </tr><tr>

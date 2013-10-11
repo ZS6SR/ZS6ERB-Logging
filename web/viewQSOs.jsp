@@ -1,5 +1,5 @@
 <%-- 
-    Document   : allContactsDetail.jsp
+    Document   : allQSOsDetail.jsp
     Created on : 02 Sep 2013, 2:40:48 PM
     Author     : Seanr
 --%>
@@ -30,7 +30,7 @@
         <table style="border-collapse: collapse; background-color: #C2D1E0;" width="100%" >
             <thead>
                 <tr style="border: 1px solid #999; background-color: #C2D1E0;">
-                    <th style="width: 80px;">Contact ID</th>
+                    <th style="width: 80px;">QSO ID</th>
                     <th style="width: 100px;">Callsign</th>
                     <th style="width: 150px;">Start</th>
                     <th style="width: 150px;">End</th>
@@ -43,18 +43,18 @@
                 </tr>
             </thead>
             <tbody>
-                <c:forEach items="${contacts}" var="eachContact">
+                <c:forEach items="${qsos}" var="eachQSO">
                     <tr style="background-color: #FFFFFF; font-size: small; height: 16px; border-bottom: 1px solid #999; border-left: 1px solid #999;">
-                        <td style="text-align: center;">${eachContact.ID}</td>
-                        <td style="text-align: center;">${eachContact.callSign}</td>
-                        <td style="text-align: center;">${eachContact.startTimeStr}</td>
-                        <td style="text-align: center;">${eachContact.endTimeStr}</td>
-                        <td style="text-align: center;">${eachContact.freq}</td>
-                        <td style="text-align: center;">${bd.getBandById(eachContact.bandId).band}</td>
-                        <td style="text-align: center;">${modes.getModeById(eachContact.modeId).mode}</td>
-                        <td style="text-align: center;">${eachContact.localRST}</td>
-                        <td style="text-align: center;">${eachContact.remoteRST}</td>
-                        <td style="text-align: center;">${ud.getUserById(eachContact.userID).callSign}</td>
+                        <td style="text-align: center;">${eachQSO.ID}</td>
+                        <td style="text-align: center;">${eachQSO.callSign}</td>
+                        <td style="text-align: center;">${eachQSO.startTimeStr}</td>
+                        <td style="text-align: center;">${eachQSO.endTimeStr}</td>
+                        <td style="text-align: center;">${eachQSO.freq}</td>
+                        <td style="text-align: center;">${bd.getBandById(eachQSO.bandId).band}</td>
+                        <td style="text-align: center;">${modes.getModeById(eachQSO.modeId).mode}</td>
+                        <td style="text-align: center;">${eachQSO.localRST}</td>
+                        <td style="text-align: center;">${eachQSO.remoteRST}</td>
+                        <td style="text-align: center;">${ud.getUserById(eachQSO.userID).callSign}</td>
                     </tr>
                 </c:forEach>
             </tbody>

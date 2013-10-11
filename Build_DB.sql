@@ -100,7 +100,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'ZS6ERB','ERB','ERB','SVw5O/WdNsoFp11NmxsuOlMKnEY=','q3ND0bxW7dQ=', '7', ''),(2,'ZS6FDX','Francois','Reyneke','FVUaQEdFnSZhlsPcuY2424SA8DA=','xY6fI/mur9w=','7', ''),(3,'ZS6SR','Sean','Riley','gkBHpcSwUYa6g6vUvxOveZ6oOuQ=','emNnQJLEqds=','1', '');
+INSERT INTO `users` VALUES (1,'ZS6ERB','ERB','ERB','SVw5O/WdNsoFp11NmxsuOlMKnEY=','q3ND0bxW7dQ=', '7', '23-10-01 08:00:00'),(2,'ZS6FDX','Francois','Reyneke','FVUaQEdFnSZhlsPcuY2424SA8DA=','xY6fI/mur9w=','7', '23-10-01 08:00:00'),(3,'ZS6SR','Sean','Riley','gkBHpcSwUYa6g6vUvxOveZ6oOuQ=','emNnQJLEqds=','1', '23-10-01 08:00:00');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -129,14 +129,14 @@ INSERT INTO `mode` VALUES (1,'SSB'),(2,'AM'),(3,'FM'),(4,'CW'),(5,'RTTY'),(6,'PS
 UNLOCK TABLES;
 
 --
--- Table structure for table `Contacts`
+-- Table structure for table `QSOs`
 --
 
-DROP TABLE IF EXISTS `contacts`;
+DROP TABLE IF EXISTS `qsos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `contacts` (
-  `contact_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `qsos` (
+  `qso_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `start_time` datetime NOT NULL,
   `end_time` datetime NOT NULL,
@@ -150,14 +150,15 @@ CREATE TABLE `contacts` (
   `local_rst` int(11) DEFAULT NULL,
   `remote_rst` int(11) DEFAULT NULL,
   `accOther` varchar(4096) DEFAULT NULL,
-  PRIMARY KEY (`contact_id`),
-  UNIQUE KEY `contact_id_UNIQUE` (`contact_id`)
+  `contest_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`qso_id`),
+  UNIQUE KEY `qso_id_UNIQUE` (`qso_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-LOCK TABLES `contacts` WRITE;
-/*!40000 ALTER TABLE `contacts` DISABLE KEYS */;
-/*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
+LOCK TABLES `qsos` WRITE;
+/*!40000 ALTER TABLE `qsos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `qsos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -178,9 +179,9 @@ CREATE TABLE `contests` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-LOCK TABLES `contacts` WRITE;
-/*!40000 ALTER TABLE `contacts` DISABLE KEYS */;
-/*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
+LOCK TABLES `contests` WRITE;
+/*!40000 ALTER TABLE `contests` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contests` ENABLE KEYS */;
 UNLOCK TABLES;
 
 

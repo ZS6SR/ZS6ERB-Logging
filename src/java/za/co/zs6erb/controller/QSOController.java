@@ -21,28 +21,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import za.co.zs6erb.dao.BandDao;
-import za.co.zs6erb.dao.ContactDao;
+import za.co.zs6erb.dao.QSODao;
 import za.co.zs6erb.dao.ModeDao;
 import za.co.zs6erb.dao.UserDao;
-import za.co.zs6erb.model.Contact;
+import za.co.zs6erb.model.QSO;
 
 /**
  *
  * @author SeanR
  */
-public class ContactController extends HttpServlet {
+public class QSOController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static String INSERT_OR_EDIT = "contacts.jsp";
-    private static String LIST_CONTACTS = "viewContacts.jsp";
-    private ContactDao dao;
+    private static String INSERT_OR_EDIT = "qsos.jsp";
+    private static String LIST_QSOS = "viewQSOs.jsp";
+    private QSODao dao;
     private BandDao bDao;
     private UserDao uDao;
     private ModeDao mDao;
     
-    public ContactController() {
+    public QSOController() {
         super();
-        dao = new ContactDao();
+        dao = new QSODao();
         bDao = new BandDao();
         uDao = new UserDao();
         mDao = new ModeDao();
@@ -53,19 +53,19 @@ public class ContactController extends HttpServlet {
         String action = request.getParameter("action");
 
         if (action.equalsIgnoreCase("delete")) {
-            int contact_id = Integer.parseInt(request.getParameter("contact_id"));
-            dao.deleteContact(contact_id);
-            forward = LIST_CONTACTS;
-            request.setAttribute("contacts", dao.getAllContacts());
+            int qso_id = Integer.parseInt(request.getParameter("qso_id"));
+            dao.deleteQSO(qso_id);
+            forward = LIST_QSOS;
+            request.setAttribute("qsos", dao.getAllQSOs());
         } else if (action.equalsIgnoreCase("edit")) {
             //====================================================
             //Change this when you have done the update functions
             //====================================================
-            forward = LIST_CONTACTS;
-            request.setAttribute("contacts", dao.getAllContacts());
-        } else if (action.equalsIgnoreCase("listContacts")) {
-            forward = LIST_CONTACTS;
-            request.setAttribute("contacts", dao.getAllContacts());
+            forward = LIST_QSOS;
+            request.setAttribute("qsos", dao.getAllQSOs());
+        } else if (action.equalsIgnoreCase("listQSOs")) {
+            forward = LIST_QSOS;
+            request.setAttribute("qsos", dao.getAllQSOs());
             request.setAttribute("bd", bDao);
             request.setAttribute("ud", uDao);
             request.setAttribute("modes", mDao);
@@ -120,22 +120,22 @@ public class ContactController extends HttpServlet {
         }
         else {
         
-            Contact contact = new Contact();
+            QSO qso = new QSO();
 
             HttpSession ss = request.getSession();
-            contact.setuserID(Integer.parseInt(ss.getAttribute("userId").toString()));
-            contact.setstartTime(tsDate);
-            contact.setendTime(tDate);
-            contact.setcallSign(sCallsign.toUpperCase());
-            contact.setname(request.getParameter("name"));
-            contact.setlocation(request.getParameter("qth"));
-            contact.setfreq(sFreq);
+            qso.setuserID(Integer.parseInt(ss.getAttribute("userId").toString()));
+            qso.setstartTime(tsDate);
+            qso.setendTime(tDate);
+            qso.setcallSign(sCallsign.toUpperCase());
+            qso.setname(request.getParameter("name"));
+            qso.setlocation(request.getParameter("qth"));
+            qso.setfreq(sFreq);
             int bandId = Integer.parseInt(request.getParameter("bandid"));
-            contact.setbandId(bandId);
+            qso.setbandId(bandId);
             int modeId = Integer.parseInt(request.getParameter("modeid"));
-            contact.setmodeId(modeId);
+            qso.setmodeId(modeId);
 
-            contact.setcpowerId(1);
+            qso.setcpowerId(1);
 
             String lR = request.getParameter("localR");
             String lS = request.getParameter("localS");
@@ -152,16 +152,16 @@ public class ContactController extends HttpServlet {
                 lRST = (lR + lS);
                 rRST = (rR + rS);
             }
-            contact.setlocalRST(Integer.parseInt(lRST));
-            contact.setremoteRST(Integer.parseInt(rRST));
+            qso.setlocalRST(Integer.parseInt(lRST));
+            qso.setremoteRST(Integer.parseInt(rRST));
 
-            contact.setnotes(request.getParameter("notes"));
+            qso.setnotes(request.getParameter("notes"));
 
-            dao.addContact(contact);
+            dao.addQSO(qso);
             
         }
-        RequestDispatcher view = request.getRequestDispatcher(LIST_CONTACTS);
-        request.setAttribute("contacts", dao.getAllContacts());
+        RequestDispatcher view = request.getRequestDispatcher(LIST_QSOS);
+        request.setAttribute("qsos", dao.getAllQSOs());
         request.setAttribute("bd", bDao);
         request.setAttribute("ud", uDao);
         request.setAttribute("modes", mDao);
