@@ -72,6 +72,15 @@
                     <td style="width: 250px;"><input type="text" name="lastname" value="<c:out value="${usr.lastName}" />" /></td>
                 </tr>
                 <tr>
+                    <td style="text-align: right; width: 150px;">User Type :</td>
+                    <td style="width: 250px;">
+                        <select name="userType" id="userType" style="font-size: 12px; width:175px; border: hidden; padding: 4px;">
+                            <option value="1" selected="true"> User </option>
+                            <option value="7"> Administrator </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
                     <td style="text-align: right; width: 150px;">Password :</td>
                     <td style="width: 250px;"><input type="password" name="pwd" value="<c:out value="${usr.pwd}" />" /></td>
                 </tr>

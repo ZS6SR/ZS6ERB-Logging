@@ -81,9 +81,9 @@
             function myStartTime() {
                 
                 var now = new Date();
-                var datetime = ((now.getUTCDate() < 10) ? ("0" + now.getUTCDate()) : (now.getUTCDate())) 
+                var datetime = now.getUTCFullYear() 
                     + "/" + (((now.getUTCMonth()+1) < 10) ? ("0" + (now.getUTCMonth()+1)) : now.getUTCMonth()+1) 
-                    + "/" + now.getUTCFullYear() + " " 
+                    + "/" + ((now.getUTCDate() < 10) ? ("0" + now.getUTCDate()) : (now.getUTCDate())) + " " 
                     + now.getUTCHours() + ":" 
                     + ((now.getUTCMinutes() < 10) ? ("0" + now.getUTCMinutes()) : (now.getUTCMinutes())) + ":" 
                     + ((now.getUTCSeconds() < 10) ? ("0" + now.getUTCSeconds()) : (now.getUTCSeconds()));

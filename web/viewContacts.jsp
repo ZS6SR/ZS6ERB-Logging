@@ -46,8 +46,8 @@
                     <tr style="background-color: #FFFFFF; font-size: small; height: 16px; border-bottom: 1px solid #999; border-left: 1px solid #999;">
                         <td style="text-align: center;">${eachContact.ID}</td>
                         <td style="text-align: center;">${eachContact.callSign}</td>
-                        <td style="text-align: center;">${eachContact.startTime}</td>
-                        <td style="text-align: center;">${eachContact.endTime}</td>
+                        <td style="text-align: center;">${eachContact.startTimeStr}</td>
+                        <td style="text-align: center;">${eachContact.endTimeStr}</td>
                         <td style="text-align: center;">${eachContact.freq}</td>
                         <td style="text-align: center;">${bd.getBandById(eachContact.bandId).band}</td>
                         <td style="text-align: center;">${modes.getModeById(eachContact.modeId).mode}</td>

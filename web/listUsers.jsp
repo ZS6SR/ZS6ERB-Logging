@@ -45,8 +45,9 @@
                 <tr style="background-color: #C2D1E0;">
                     <th style="width: 50px;">Id</th>
                     <th style="width: 200px;">Callsign</th>
-                    <th style="width: 200px;">First Name</th>
-                    <th style="width: 200px;">Last Name</th>
+                    <th style="width: 160px;">First Name</th>
+                    <th style="width: 160px;">Last Name</th>
+                    <th style="width: 160px;">User Since</th>
                     <th colspan=2 style="width: 200px;">Action</th>
                 </tr>
             </thead>
@@ -57,6 +58,7 @@
                         <td><c:out value="${u.callSign}" /></td>
                         <td><c:out value="${u.firstName}" /></td>
                         <td><c:out value="${u.lastName}" /></td>
+                        <td style="text-align: center;"><c:out value="${u.usString}" /></td>
                         <td style="text-align: center;"><a href="UsersController?action=edit&usrid=<c:out value="${u.ID}" />">Update</a></td>
                         <td style="text-align: center;"><a href="UsersController?action=delete&usrid=<c:out value="${u.ID}" />">Delete</a></td>
                     </tr>
