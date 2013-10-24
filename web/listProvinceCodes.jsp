@@ -27,25 +27,25 @@
         <jsp:include page="menu.jsp" />
         <jsp:include page="countdown.jsp" />
         
-        <a href="PowerController?action=insert" class="myButton">Add Power</a>
+        <a href="ProvinceCodesController?action=insert" class="myButton">Add Province Code</a>
         <br /><br />
         <table border=1>
             <thead>
                 <tr style="background-color: #C2D1E0;">
                     <th style="width: 50px;">Id</th>
-                    <th style="width: 200px;">Power</th>
-                    <th style="width: 50px;">Multiplier</th>
+                    <th style="width: 200px;">Province Name</th>
+                    <th style="width: 100px;">Abbreviation</th>
                     <th colspan=2 style="width: 200px;">Action</th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach items="${power}" var="p">
+                <c:forEach items="${provinces}" var="pcs">
                     <tr>
-                        <td><c:out value="${p.ID}" /></td>
-                        <td><c:out value="${p.power}" /></td>
-                        <td><c:out value="${p.pmultiplier}" /></td>
-                        <td style="text-align: center;"><a href="PowerController?action=edit&power_id=<c:out value="${p.ID}" />">Update</a></td>
-                        <td style="text-align: center;"><a href="PowerController?action=delete&power_id=<c:out value="${p.ID}" />">Delete</a></td>
+                        <td><c:out value="${pcs.ID}" /></td>
+                        <td style="text-align: center;"><c:out value="${pcs.provinceName}" /></td>
+                        <td style="text-align: center;"><c:out value="${pcs.provinceCode}" /></td>
+                        <td style="text-align: center;"><a href="ProvinceCodesController?action=edit&pc_id=<c:out value="${pcs.ID}" />">Update</a></td>
+                        <td style="text-align: center;"><a href="ProvinceCodesController?action=delete&pc_id=<c:out value="${pcs.ID}" />">Delete</a></td>
                     </tr>
                 </c:forEach>
             </tbody>

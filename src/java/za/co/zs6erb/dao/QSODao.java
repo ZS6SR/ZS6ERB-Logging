@@ -30,8 +30,8 @@ public class QSODao {
     public void addQSO(QSO qso) {
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("insert into qsos(user_id, start_time, end_time, callsign, name, location, freq, band_id, mode_id, power_id, local_rst, remote_rst, accOther) " + 
-                                        "values (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                    .prepareStatement("insert into qsos(user_id, start_time, end_time, callsign, name, location, freq, band_id, mode_id, power_id, local_rst, remote_rst, accOther, contest_id) " + 
+                                        "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             // Parameters start with 1
             preparedStatement.setInt(1, qso.getuserID());
             preparedStatement.setTimestamp(2, qso.getstartTime());
@@ -46,6 +46,7 @@ public class QSODao {
             preparedStatement.setInt(11, qso.getlocalRST());
             preparedStatement.setInt(12, qso.getremoteRST());
             preparedStatement.setString(13, qso.getnotes());
+            preparedStatement.setInt(14, qso.getcontestID());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -100,6 +101,7 @@ public class QSODao {
                 lQSO.setlocalRST(rs.getInt("local_rst"));
                 lQSO.setremoteRST(rs.getInt("remote_rst"));
                 lQSO.setnotes(rs.getString("accOther"));
+                lQSO.setcontestID(rs.getInt("contest_id"));
                 qsoList.add(lQSO);
             }
         } catch (SQLException e) {
@@ -125,6 +127,23 @@ public class QSODao {
         return callSignList;
     }
     
+    //All Callsigns for a specific contest
+    public List<String> getAllCallSigns(int contestId) {
+        List <String> callSignList = new ArrayList<String>();
+        
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("select distinct callsign from qsos where contest_id=" + contestId);
+            while (rs.next()) {
+                callSignList.add(rs.getString("callsign"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return callSignList;
+    }
+    
     public HashMap<String, Integer> getAllCS_Modes() {
         HashMap <String, Integer> cs_mode = new HashMap<String, Integer>();
         
@@ -139,5 +158,55 @@ public class QSODao {
         }
         
         return cs_mode;
+    }
+    
+    //All Callsigns for a specific contest
+    public HashMap<String, Integer> getAllCS_Modes(int contestId) {
+        HashMap <String, Integer> cs_mode = new HashMap<String, Integer>();
+        
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("select callsign,mode_id from qsos where contest_id="+contestId);
+            while (rs.next()) {
+                cs_mode.put(rs.getString("callsign"), rs.getInt("mode_id"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return cs_mode;
+    }
+    
+    public HashMap<String, Integer> getAllCS_Bands() {
+        HashMap <String, Integer> cs_band = new HashMap<String, Integer>();
+        
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("select callsign,band_id from qsos");
+            while (rs.next()) {
+                cs_band.put(rs.getString("callsign"), rs.getInt("band_id"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return cs_band;
+    }
+    
+    //All Callsigns for a specific contest
+    public HashMap<String, Integer> getAllCS_Bands(int contestId) {
+        HashMap <String, Integer> cs_band = new HashMap<String, Integer>();
+        
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("select callsign,band_id from qsos where contest_id="+contestId);
+            while (rs.next()) {
+                cs_band.put(rs.getString("callsign"), rs.getInt("band_id"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return cs_band;
     }
 }

@@ -36,7 +36,7 @@
     background-color: #FFFFFF;
     text-align: center;
     vertical-align: middle;
-    height: 150px;
+    height: 100px;
     width: 254px;
     display: table-cell;
     border: solid #C0C0C0;
@@ -46,7 +46,7 @@
 .uWrap
 {
     width: 500px;
-    height: 150px;
+    height: 100px;
     display: table-row;
 }
 
@@ -70,7 +70,7 @@
     background-color: #FFFFFF;
     text-align: center;
     vertical-align: middle;
-    height: 150px;
+    height: 100px;
     width: 250px;
     display: table-cell;
     border-right: solid #C0C0C0;

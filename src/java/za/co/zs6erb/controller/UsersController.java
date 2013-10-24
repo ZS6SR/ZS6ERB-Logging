@@ -22,7 +22,7 @@ import za.co.zs6erb.model.User;
 public class UsersController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static String INSERT_OR_EDIT = "users.jsp";
+    private static String INSERT_OR_EDIT = "eUsers.jsp";
     private static String LIST_USERS = "listUsers.jsp";
     private UserDao dao;
     

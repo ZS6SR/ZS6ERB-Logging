@@ -1,13 +1,16 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package za.co.zs6erb.model;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 
 /**
  *
  * @author SeanR
  */
-public class QSO {
-    private int qso_id;
+public class Contact {
+    private int contact_id;
     private int user_id; 
     private Timestamp startTime;
     private Timestamp endTime;
@@ -21,10 +24,10 @@ public class QSO {
     private String notes;
     private String name;
     private String location;
-    private int contestID = 0;
+           
     
-    public int getID() { return qso_id; }
-    public void setID(int qso_id) { this.qso_id = qso_id; }
+    public int getID() { return contact_id; }
+    public void setID(int contact_id) { this.contact_id = contact_id; }
     
     public int getuserID() { return user_id; }
     public void setuserID(int user_id) { this.user_id = user_id; }
@@ -65,24 +68,11 @@ public class QSO {
     public String getlocation() { return location; }
     public void setlocation(String location) { this.location = location; }
     
-    public String getstartTimeStr() {
-        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        return dt.format(startTime);
-    }
-    
-    public String getendTimeStr() {
-        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        return dt.format(endTime);
-    }
-    
-    public int getcontestID() { return contestID; }
-    public void setcontestID(int contestID) { this.contestID = contestID; }
-    
     @Override
     public String toString() {
-        return "QSO [qso_id=" + qso_id + ", User ID=" + user_id + ", Start Time=" + startTime + ", End Time=" + endTime + ", Callsign=" + callsign + 
+        return "Contact [contact_id=" + contact_id + ", User ID=" + user_id + ", Start Time=" + startTime + ", End Time=" + endTime + ", Callsign=" + callsign + 
                 ", BandID=" + bandId + ", ModeID=" + modeId + ", PowerID=" + powerId +", localRST=" + localRST + 
                 ", remoteRST=" + remoteRST + ", notes=" + notes + ", Name=" + name + "location=" + location + 
-                ", contestID=" + contestID + "]";
+                "]";
     } 
 }

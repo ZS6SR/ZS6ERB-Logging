@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import za.co.zs6erb.util.DbUtil;
 
 /**
@@ -72,5 +74,30 @@ public class SummaryDao {
         }
         
         return tQSO;
+    }
+    
+    public int getNumQSOinLastHour() {
+        int numQsos = 0;
+        
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        Calendar c = Calendar.getInstance();
+        //This is for 1 (One) hour ago but the QSOs are logged according to GMT time (we are +2hrs)
+        c.add(Calendar.HOUR_OF_DAY, -3);
+        java.util.Date date = c.getTime();
+        String query = "select count(*) as count from qsos where start_time > '" + formatter.format(date) + "'";
+        //System.out.println("Query = " + query);
+        
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            
+            if (rs.first()) {
+                numQsos = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return numQsos;
     }
 }

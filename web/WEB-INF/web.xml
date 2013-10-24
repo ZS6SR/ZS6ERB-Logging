@@ -17,12 +17,20 @@
         <servlet-class>za.co.zs6erb.controller.PowerController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ProvinceCodesController</servlet-name>
+        <servlet-class>za.co.zs6erb.controller.ProvinceCodesController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>QSOController</servlet-name>
         <servlet-class>za.co.zs6erb.controller.QSOController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ContestsController</servlet-name>
         <servlet-class>za.co.zs6erb.controller.ContestsController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StationClassController</servlet-name>
+        <servlet-class>za.co.zs6erb.controller.StationClassController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UsersController</servlet-name>
@@ -41,12 +49,20 @@
         <url-pattern>/PowerController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>ProvinceCodesController</servlet-name>
+        <url-pattern>/ProvinceCodesController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>QSOController</servlet-name>
         <url-pattern>/QSOController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ContestsController</servlet-name>
         <url-pattern>/ContestsController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StationClassController</servlet-name>
+        <url-pattern>/StationClassController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

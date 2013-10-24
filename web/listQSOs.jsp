@@ -30,8 +30,8 @@
         <table style="border-collapse: collapse; background-color: #C2D1E0;" width="100%" >
             <thead>
                 <tr style="border: 1px solid #999; background-color: #C2D1E0;">
-                    <th style="width: 80px;">QSO ID</th>
-                    <th style="width: 100px;">Callsign</th>
+                    <th style="width: 60px;">QSO ID</th>
+                    <th style="width: 80px;">Callsign</th>
                     <th style="width: 150px;">Start</th>
                     <th style="width: 150px;">End</th>
                     <th style="width: 80px;">Frequency</th>
@@ -40,6 +40,7 @@
                     <th style="width: 80px;">My RST</th>
                     <th style="width: 80px;">His RST</th>
                     <th style="width: 100px;">User</th>
+                    <th style="width: 50px;">Contest ID</th>
                 </tr>
             </thead>
             <tbody>
@@ -55,6 +56,7 @@
                         <td style="text-align: center;">${eachQSO.localRST}</td>
                         <td style="text-align: center;">${eachQSO.remoteRST}</td>
                         <td style="text-align: center;">${ud.getUserById(eachQSO.userID).callSign}</td>
+                        <td style="text-align: center;">${eachQSO.contestID}</td>
                     </tr>
                 </c:forEach>
             </tbody>

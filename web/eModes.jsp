@@ -15,23 +15,27 @@
         <title>ZS6ERB - Logging Software</title>
         <link rel="stylesheet" href="css/menu.css">
         <link rel="stylesheet" href="css/buttons.css">
+        <script src="sj/jquery.js"></script>
+        <script src="sj/modernizr.js"></script>
+        
         <!--[if IE]>
                 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
     </head>
-    <body class="no-js">
-        <%@ include file="header.jsp" %>
-        <%@ include file="menu.jsp" %>
+    <body onload="countdown(year,month,day,hour,minute)" class="no-js">
+        <jsp:include page="header.jsp" />
+        <jsp:include page="menu.jsp" />
+        <jsp:include page="countdown.jsp" />
         <br /><br />
-        <form method="POST" action='BandsController' name="frmAddBand">
+        <form method="POST" action='ModesController' name="frmAddMode">
             <table border="0" style="padding: 3px;">
                 <tr>
                     <td style="text-align: right; width: 150px;">ID :</td>
-                    <td style="width: 250px;"><input type="text" readonly="readonly" name="band_id" value="<c:out value="${band.ID}" />" /></td>
+                    <td style="width: 250px;"><input type="text" readonly="readonly" name="mode_id" value="<c:out value="${mode.ID}" />" /></td>
                 </tr>
                 <tr>
-                    <td style="text-align: right; width: 150px;">Band :</td>
-                    <td style="width: 250px;"><input type="text" name="band" value="<c:out value="${band.band}" />" /></td>
+                    <td style="text-align: right; width: 150px;">Mode :</td>
+                    <td style="width: 250px;"><input type="text" name="mode" value="<c:out value="${mode.mode}" />" /></td>
                 </tr>
                 <tr>
                     <td colspan="2">&nbsp;</td>
@@ -43,6 +47,6 @@
             
             </table>
         </form>
-        <%@ include file="footer.jsp" %>
+    <jsp:include page="footer.jsp" />
     </body>
 </html>

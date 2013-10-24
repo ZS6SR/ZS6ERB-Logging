@@ -15,6 +15,9 @@
         <title>ZS6ERB - Logging Software</title>
         <link rel="stylesheet" href="css/menu.css">
         <link rel="stylesheet" href="css/buttons.css">
+        <script src="sj/jquery.js"></script>
+        <script src="sj/modernizr.js"></script>
+        
         <!--[if IE]>
                 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
@@ -45,9 +48,10 @@
             }
         </script>
     </head>
-    <body class="no-js">
-        <%@ include file="header.jsp" %>
-        <%@ include file="menu.jsp" %>
+    <body onload="countdown(year,month,day,hour,minute)" class="no-js">
+        <jsp:include page="header.jsp" />
+        <jsp:include page="menu.jsp" />
+        <jsp:include page="countdown.jsp" />
         <br /><br />
         <form method="POST" action='UsersController' name="frmAddUser" onsubmit="return checkPwd(this);">
             <table border="0" style="padding: 3px;">
@@ -68,6 +72,15 @@
                     <td style="width: 250px;"><input type="text" name="lastname" value="<c:out value="${usr.lastName}" />" /></td>
                 </tr>
                 <tr>
+                    <td style="text-align: right; width: 150px;">User Type :</td>
+                    <td style="width: 250px;">
+                        <select name="userType" id="userType" style="font-size: 12px; width:175px; border: hidden; padding: 4px;">
+                            <option value="1" selected="true"> User </option>
+                            <option value="7"> Administrator </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
                     <td style="text-align: right; width: 150px;">Password :</td>
                     <td style="width: 250px;"><input type="password" name="pwd" value="<c:out value="${usr.pwd}" />" /></td>
                 </tr>
@@ -85,6 +98,6 @@
 
             </table>
         </form>
-        <%@ include file="footer.jsp" %>
+        <jsp:include page="footer.jsp" />
     </body>
 </html>

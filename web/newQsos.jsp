@@ -36,21 +36,48 @@
                 $("#callsign").blur(function(){
                     var csToCheck = $("#callsign").val().toString().toUpperCase();
                     var currentMode = parseInt($("#modeid").val());
-                    var csm = ${cs};
+                    var currentBand = parseInt($("#bandid").val());
+                    var modeMatchFound = 0;
+                    var bandMatchFound = 0;
                     
+                    alert("current Mode = " + currentMode + "\ncurrent Band = " + currentBand);
+                    
+                    var csm = ${cs};
                     var keysArray = new Array();
                     for (var key in csm) {
                         keysArray.push(key);
                     }  
-
+                    
                     var i = 0;
                     while (i < keysArray.length) {
                         if ( (csToCheck === keysArray[i]) && (currentMode === csm[keysArray[i]]) ) {
-                            alert("\t**WARNING**\n\nYou have worked \"" + csToCheck + "\" using this mode previously!");
+                            modeMatchFound = 1;
                             break;
                         }
                         i++;
                     }
+                    
+                    var csb = ${csbd};
+                    var bandArray = new Array();
+                    for (var key in csb) {
+                        bandArray.push(key);
+                    }
+                    var j = 0;
+                    while (j < bandArray.length) {
+                        alert("Checking - " + csb[bandArray[j]] + " Length of Array = " + bandArray.length);
+                        if ( (csToCheck === bandArray[j]) && (currentBand === csb[bandArray[j]]) ) {
+                            bandMatchFound = 1;
+                            break;
+                        }
+                        j++;
+                    }
+                    
+                    alert("modeMatch = " + modeMatchFound + "\nbandMatch = " + bandMatchFound);
+                    
+                    if ((modeMatchFound > 0) && (bandMatchFound > 0)) {
+                        alert("\t**WARNING**\n\nYou have worked \"" + csToCheck + "\" using " + currentMode + " on " + currentBand + " previously!");
+                    }
+                    
                 });
                 
                 
@@ -100,6 +127,7 @@
         
         <br />
         <form method="POST" action='QSOController' name="frmAddQSO">
+            <input type="hidden" id="contest_id" name="contest_id" value="0" />
             <table style="border-width: 0px; border: hidden; width: 70%;">
                 <tr>
                     <td id="qsoCap" style="width: 200px; text-align: right;">Frequency&nbsp;</td>

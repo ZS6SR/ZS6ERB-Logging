@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import za.co.zs6erb.dao.BandDao;
+import za.co.zs6erb.dao.ContestDao;
 import za.co.zs6erb.dao.QSODao;
 import za.co.zs6erb.dao.ModeDao;
 import za.co.zs6erb.dao.UserDao;
@@ -33,8 +34,8 @@ import za.co.zs6erb.model.QSO;
 public class QSOController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static String INSERT_OR_EDIT = "qsos.jsp";
-    private static String LIST_QSOS = "viewQSOs.jsp";
+    private static String INSERT_OR_EDIT = "newQsos.jsp";
+    private static String LIST_QSOS = "listQSOs.jsp";
     private QSODao dao;
     private BandDao bDao;
     private UserDao uDao;
@@ -73,6 +74,7 @@ public class QSOController extends HttpServlet {
         } else {
             forward = INSERT_OR_EDIT;
             request.setAttribute("bd", new Gson().toJson(bDao.getAllBands(), List.class));
+            request.setAttribute("csbd", new Gson().toJson(dao.getAllCS_Bands(), HashMap.class));
             request.setAttribute("cs", new Gson().toJson(dao.getAllCS_Modes(), HashMap.class));
             request.setAttribute("modes", mDao);
         }
@@ -156,6 +158,11 @@ public class QSOController extends HttpServlet {
             qso.setremoteRST(Integer.parseInt(rRST));
 
             qso.setnotes(request.getParameter("notes"));
+            
+            ContestDao cdao = new ContestDao();
+            int contId = cdao.getcurrentContestID();
+            System.out.println("ContestID = " + contId);
+            qso.setcontestID(contId);
 
             dao.addQSO(qso);
             
@@ -165,6 +172,8 @@ public class QSOController extends HttpServlet {
         request.setAttribute("bd", bDao);
         request.setAttribute("ud", uDao);
         request.setAttribute("modes", mDao);
+        request.setAttribute("csbd", new Gson().toJson(dao.getAllCS_Bands(), HashMap.class));
+        request.setAttribute("cs", new Gson().toJson(dao.getAllCS_Modes(), HashMap.class));
         view.forward(request, response);
         
     }

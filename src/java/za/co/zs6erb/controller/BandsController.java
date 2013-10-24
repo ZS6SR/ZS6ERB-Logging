@@ -22,7 +22,7 @@ import za.co.zs6erb.model.Band;
 public class BandsController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static String INSERT_OR_EDIT = "bands.jsp";
+    private static String INSERT_OR_EDIT = "newBands.jsp";
     private static String LIST_BANDS = "listBands.jsp";
     private BandDao dao;
     

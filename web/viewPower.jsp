@@ -11,23 +11,19 @@
         <meta charset="utf-8">
         <title>ZS6ERB - Logging Software</title>
         <link rel="stylesheet" href="css/menu.css">
-        <link rel="stylesheet" href="css/buttons.css">
-        <script src="sj/jquery.js"></script>
-        <script src="sj/modernizr.js"></script>
-
         <!--[if IE]>
                 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
     </head>
     <body class="no-js">
-        <jsp:include page="header.jsp" />
-        <jsp:include page="menu.jsp" />
+        <%@ include file="header.jsp" %>
+        <%@ include file="menu.jsp" %>
         <br /><br />
         <% if (session.getAttribute("uGroup") == "7az") { %>
             <jsp:forward page="/PowerController?action=listPower" />
         <% } else { %>
             <jsp:forward page="/index.jsp" />
         <% } %>
-        <jsp:include page="footer.jsp" />
+    <%@ include file="footer.jsp" %>
     </body>
 </html>

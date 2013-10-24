@@ -38,6 +38,15 @@
                 <div class="uTot" style="color: green;"><%=sd.getTopUser()%></div>
                 <div class="uTot"><%=sd.getTopUserQSO()%></div>
             </div>
+            <div class="qWrap">
+                <div class="qHead">No. QSOs in Last Hour</div>
+                <div class="uHead"></div>
+            </div>
+            <div class="uWrap">
+                <div class="qTot"><%=sd.getNumQSOinLastHour()%></div>
+                <div class="uTot" style="color: green;"></div>
+                <div class="uTot"></div>
+            </div>
         </div> 
     </center>
     <jsp:include page="footer.jsp" />

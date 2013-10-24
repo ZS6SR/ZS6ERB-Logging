@@ -21,7 +21,7 @@ import za.co.zs6erb.model.Power;
 public class PowerController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static String INSERT_OR_EDIT = "power.jsp";
+    private static String INSERT_OR_EDIT = "ePower.jsp";
     private static String LIST_POWER = "listPower.jsp";
     private PowerDao dao;
     
@@ -59,6 +59,7 @@ public class PowerController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Power power = new Power();
         power.setpower(request.getParameter("power"));
+        power.setpmultiplier(Integer.parseInt(request.getParameter("powerMultiplier")));
         String power_id = request.getParameter("power_id");
         if (power_id == null || power_id.isEmpty()) {
             dao.addPower(power);

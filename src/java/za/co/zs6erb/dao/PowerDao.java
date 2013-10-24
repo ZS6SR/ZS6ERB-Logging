@@ -29,9 +29,10 @@ public class PowerDao {
     public void addPower(Power power) {
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("insert into power(power) values (?)");
+                    .prepareStatement("insert into power(power, powerMultiplier) values (?,?)");
             // Parameters start with 1
             preparedStatement.setString(1, power.getpower());
+            preparedStatement.setInt(2, power.getpmultiplier());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -55,10 +56,11 @@ public class PowerDao {
     public void updatePower(Power power) {
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("update power set power=? where power_id=?");
+                    .prepareStatement("update power set power=?, powerMultiplier=? where power_id=?");
             // Parameters start with 1
             preparedStatement.setString(1, power.getpower());
-            preparedStatement.setInt(2, power.getID());
+            preparedStatement.setInt(2, power.getpmultiplier());
+            preparedStatement.setInt(3, power.getID());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -70,11 +72,12 @@ public class PowerDao {
         List<Power> usrList = new ArrayList<Power>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("select * from power order by power");
+            ResultSet rs = statement.executeQuery("select * from power order by power_id");
             while (rs.next()) {
                 Power lPower = new Power();
                 lPower.setID(rs.getInt("power_id"));
                 lPower.setpower(rs.getString("power"));
+                lPower.setpmultiplier(rs.getInt("powerMultiplier"));
                 usrList.add(lPower);
             }
         } catch (SQLException e) {
@@ -95,6 +98,7 @@ public class PowerDao {
             if (rs.next()) {
                 lPower.setID(rs.getInt("power_id"));
                 lPower.setpower(rs.getString("power"));
+                lPower.setpmultiplier(rs.getInt("powerMultiplier"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

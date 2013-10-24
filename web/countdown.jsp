@@ -21,7 +21,7 @@ var note="No Contest At Present!";	/* -->Enter what you want the script to
     if (contId > 0) {
         Contest contest = cdao.getContestById(contId);
 %>
-    
+
 var year=<%=contest.getEndYear()%>;      /* -->Enter the count down target date YEAR */
 var month=<%=contest.getEndMonth()%>;       /* -->Enter the count down target date MONTH */
 var day=<%=contest.getEndDay()%>;         /* -->Enter the count down target date DAY */

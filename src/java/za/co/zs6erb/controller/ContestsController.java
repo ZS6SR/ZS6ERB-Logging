@@ -24,7 +24,7 @@ import za.co.zs6erb.model.Contest;
 public class ContestsController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static String INSERT_OR_EDIT = "contests.jsp";
+    private static String INSERT_OR_EDIT = "eContests.jsp";
     private static String LIST_CONTESTS = "listContests.jsp";
     private ContestDao dao;
     

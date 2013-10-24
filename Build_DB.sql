@@ -32,9 +32,10 @@ DROP TABLE IF EXISTS `power`;
 CREATE TABLE `power` (
   `power_id` int(11) NOT NULL AUTO_INCREMENT,
   `power` varchar(45) DEFAULT NULL,
+  `powerMultiplier` int(11) default '1',
   PRIMARY KEY (`power_id`),
   UNIQUE KEY `power_id_UNIQUE` (`power_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +44,7 @@ CREATE TABLE `power` (
 
 LOCK TABLES `power` WRITE;
 /*!40000 ALTER TABLE `power` DISABLE KEYS */;
-INSERT INTO `power` VALUES (1,'50');
+INSERT INTO `power` VALUES (1,'< 5W', '6'),(2, '< 50W', '4'), (3, '< 100W', '2'), (4, '> 100W', '1');
 /*!40000 ALTER TABLE `power` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,7 +116,7 @@ CREATE TABLE `mode` (
   `mode_id` int(11) NOT NULL AUTO_INCREMENT,
   `mode` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`mode_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,8 +125,58 @@ CREATE TABLE `mode` (
 
 LOCK TABLES `mode` WRITE;
 /*!40000 ALTER TABLE `mode` DISABLE KEYS */;
-INSERT INTO `mode` VALUES (1,'SSB'),(2,'AM'),(3,'FM'),(4,'CW'),(5,'RTTY'),(6,'PSK-31'),(7,'SSTV');
+INSERT INTO `mode` VALUES (1,'SSB'),(2,'AM'),(3,'FM'),(4,'CW'),(5,'RTTY'),(6,'PSK-31');
 /*!40000 ALTER TABLE `mode` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `province_codes`
+--
+
+DROP TABLE IF EXISTS `province_codes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `province_codes` (
+  `province_code_id` int(11) NOT NULL AUTO_INCREMENT,
+  `province_name` varchar(45) DEFAULT NULL,
+  `province_code` varchar(2) DEFAULT NULL,
+  PRIMARY KEY (`province_code_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mode`
+--
+
+LOCK TABLES `province_codes` WRITE;
+/*!40000 ALTER TABLE `province_codes` DISABLE KEYS */;
+INSERT INTO `province_codes` VALUES (1,'Eastern Cape', 'EC'),(2,'Free State', 'FS'),(3,'Gauteng', 'GP'),(4,'KwaZulu-Natal', 'KN'),(5,'Limpopo', 'LP'),(6,'Mpumalanga', 'MP'),(7,'Northern Cape', 'NC'),(8,'North West', 'NW'),(9,'Western Cape', 'WC'),(10,'International', 'DX');
+/*!40000 ALTER TABLE `province_codes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `stationClasses`
+--
+
+DROP TABLE IF EXISTS `stationClasses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `stationClasses` (
+  `stationClass_id` int(11) NOT NULL AUTO_INCREMENT,
+  `className` varchar(45) DEFAULT NULL,
+  `classLetter` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`stationClass_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `stationClasses`
+--
+
+LOCK TABLES `stationClasses` WRITE;
+/*!40000 ALTER TABLE `stationClasses` DISABLE KEYS */;
+INSERT INTO `stationClasses` VALUES (1,'Field Station - Multi operator', 'A'),(2,'Field Station - Multi operator - QRP', 'B'),(3,'Field Station - Single operator', 'C'),(4,'Field Station - Single operator - QRP', 'D'),(5,'Ultra Light Portable', 'E'),(6,'General Stations', 'F');
+/*!40000 ALTER TABLE `stationClasses` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -150,7 +201,9 @@ CREATE TABLE `qsos` (
   `local_rst` int(11) DEFAULT NULL,
   `remote_rst` int(11) DEFAULT NULL,
   `accOther` varchar(4096) DEFAULT NULL,
-  `contest_id` int(11) DEFAULT NULL,
+  `contest_id` int(11) DEFAULT 0,
+  `stationClass_id` int(11) DEFAULT 0,
+  `province_id` int(11) DEFAULT 0,
   PRIMARY KEY (`qso_id`),
   UNIQUE KEY `qso_id_UNIQUE` (`qso_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

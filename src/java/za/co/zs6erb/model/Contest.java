@@ -12,6 +12,8 @@ public class Contest {
     private String contestName;
     private Date startDate;
     private Date endDate;
+    private int stationClass;
+    private int provinceCode;
     
     public int getID() { return contest_id; }
     public void setID(int contest_id) { this.contest_id = contest_id; }
@@ -59,6 +61,12 @@ public class Contest {
         SimpleDateFormat dt = new SimpleDateFormat("mm");
         return dt.format(endDate);
     }
+    
+    public int getstationClass() { return stationClass; }
+    public void setstationClass(int stationClass) { this.stationClass = stationClass; }
+    
+    public int getprovinceCode() { return provinceCode; }
+    public void setprovinceCode(int provinceCode) { this.provinceCode = provinceCode; }
     
     @Override
     public String toString() {

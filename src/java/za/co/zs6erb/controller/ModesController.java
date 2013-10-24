@@ -21,7 +21,7 @@ import za.co.zs6erb.model.Mode;
 public class ModesController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static String INSERT_OR_EDIT = "modes.jsp";
+    private static String INSERT_OR_EDIT = "eModes.jsp";
     private static String LIST_MODES = "listModes.jsp";
     private ModeDao dao;
     
