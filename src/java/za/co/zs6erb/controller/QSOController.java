@@ -161,7 +161,7 @@ public class QSOController extends HttpServlet {
             
             ContestDao cdao = new ContestDao();
             int contId = cdao.getcurrentContestID();
-            System.out.println("ContestID = " + contId);
+            //System.out.println("ContestID = " + contId);
             qso.setcontestID(contId);
 
             dao.addQSO(qso);

@@ -38,7 +38,9 @@
                     <th style="width: 100px;">Contest Name</th>
                     <th style="width: 150px;">Start Date</th>
                     <th style="width: 150px;">End Date</th>
-                    <th colspan=2 style="width: 200px;">Action</th>
+                    <th style="width: 150px;">My Province</th>
+                    <th style="width: 150px;">My Station Class</th>
+                    <th colspan=2 style="width: 180px;">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,6 +50,8 @@
                         <td style="text-align: center;"><c:out value="${b.contestName}" /></td>
                         <td style="text-align: center;"><c:out value="${b.startDateStr}" /></td>
                         <td style="text-align: center;"><c:out value="${b.endDateStr}" /></td>
+                        <td style="text-align: center;"><c:out value="${b.provinceCodeName}" /></td>
+                        <td style="text-align: center;"><c:out value="${b.stationClassName}" /></td>
                         <td style="text-align: center;"><a href="ContestsController?action=edit&contest_id=<c:out value="${b.ID}" />">Update</a></td>
                         <td style="text-align: center;"><a href="ContestsController?action=delete&contest_id=<c:out value="${b.ID}" />">Delete</a></td>
                     </tr>

@@ -30,8 +30,8 @@ public class QSODao {
     public void addQSO(QSO qso) {
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("insert into qsos(user_id, start_time, end_time, callsign, name, location, freq, band_id, mode_id, power_id, local_rst, remote_rst, accOther, contest_id) " + 
-                                        "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                    .prepareStatement("insert into qsos(user_id, start_time, end_time, callsign, name, location, freq, band_id, mode_id, power_id, local_rst, remote_rst, accOther, contest_id) "
+                            + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             // Parameters start with 1
             preparedStatement.setInt(1, qso.getuserID());
             preparedStatement.setTimestamp(2, qso.getstartTime());
@@ -110,10 +110,10 @@ public class QSODao {
 
         return qsoList;
     }
-    
+
     public List<String> getAllCallSigns() {
-        List <String> callSignList = new ArrayList<String>();
-        
+        List<String> callSignList = new ArrayList<String>();
+
         try {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("select distinct callsign from qsos");
@@ -123,14 +123,14 @@ public class QSODao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return callSignList;
     }
-    
+
     //All Callsigns for a specific contest
     public List<String> getAllCallSigns(int contestId) {
-        List <String> callSignList = new ArrayList<String>();
-        
+        List<String> callSignList = new ArrayList<String>();
+
         try {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("select distinct callsign from qsos where contest_id=" + contestId);
@@ -140,73 +140,110 @@ public class QSODao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return callSignList;
     }
-    
-    public HashMap<String, Integer> getAllCS_Modes() {
-        HashMap <String, Integer> cs_mode = new HashMap<String, Integer>();
-        
+
+    public HashMap<String, ArrayList<Integer>> getAllCS_Modes() {
+        HashMap<String, ArrayList<Integer>> cs_mode = new HashMap<String, ArrayList<Integer>>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("select callsign,mode_id from qsos");
-            while (rs.next()) {
-                cs_mode.put(rs.getString("callsign"), rs.getInt("mode_id"));
+            ArrayList<String> lCallsigns = getDistinctCallSigns();
+            for (String cs : lCallsigns) {
+                ArrayList<Integer> alBands = new ArrayList<Integer>();
+                ResultSet rs = statement.executeQuery("select distinct mode_id from qsos where callsign = \"" + cs + "\"");
+                while (rs.next()) {
+                    alBands.add(rs.getInt("mode_id"));
+                }
+                cs_mode.put(cs, alBands);
             }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return cs_mode;
+    }
+
+    //All Callsigns for a specific contest
+    public HashMap<String, ArrayList<Integer>> getAllCS_Modes(int contestId) {
+        HashMap<String, ArrayList<Integer>> cs_mode = new HashMap<String, ArrayList<Integer>>();
+        try {
+            Statement statement = connection.createStatement();
+            ArrayList<String> lCallsigns = getDistinctCallSigns();
+            for (String cs : lCallsigns) {
+                ArrayList<Integer> alBands = new ArrayList<Integer>();
+                ResultSet rs = statement.executeQuery("select distinct mode_id from qsos where callsign = \"" + cs + "\" where contest_id=" + contestId);
+                while (rs.next()) {
+                    alBands.add(rs.getInt("mode_id"));
+                }
+                cs_mode.put(cs, alBands);
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
         
         return cs_mode;
     }
-    
-    //All Callsigns for a specific contest
-    public HashMap<String, Integer> getAllCS_Modes(int contestId) {
-        HashMap <String, Integer> cs_mode = new HashMap<String, Integer>();
-        
+
+    //Get all bands for callsigns
+    public HashMap<String, ArrayList<Integer>> getAllCS_Bands() {
+        HashMap<String, ArrayList<Integer>> cs_band = new HashMap<String, ArrayList<Integer>>();
+
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("select callsign,mode_id from qsos where contest_id="+contestId);
-            while (rs.next()) {
-                cs_mode.put(rs.getString("callsign"), rs.getInt("mode_id"));
+            ArrayList<String> lCallsigns = getDistinctCallSigns();
+            for (String cs : lCallsigns) {
+                ArrayList<Integer> alBands = new ArrayList<Integer>();
+                ResultSet rs = statement.executeQuery("select distinct band_id from qsos where callsign = \"" + cs + "\"");
+                while (rs.next()) {
+                    alBands.add(rs.getInt("band_id"));
+                }
+                cs_band.put(cs, alBands);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
-        return cs_mode;
+
+        return cs_band;
     }
-    
-    public HashMap<String, Integer> getAllCS_Bands() {
-        HashMap <String, Integer> cs_band = new HashMap<String, Integer>();
-        
+
+    //All Callsigns for a specific contest
+    public HashMap<String, ArrayList<Integer>> getAllCS_Bands(int contestId) {
+        HashMap<String, ArrayList<Integer>> cs_band = new HashMap<String, ArrayList<Integer>>();
+
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("select callsign,band_id from qsos");
-            while (rs.next()) {
-                cs_band.put(rs.getString("callsign"), rs.getInt("band_id"));
+            ArrayList<String> lCallsigns = getDistinctCallSigns();
+            for (String cs : lCallsigns) {
+                ArrayList<Integer> alBands = new ArrayList<Integer>();
+                ResultSet rs = statement.executeQuery("select distinct band_id from qsos where callsign = \"" + cs + "\" where contest_id=" + contestId);
+                while (rs.next()) {
+                    alBands.add(rs.getInt("band_id"));
+                }
+                cs_band.put(cs, alBands);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return cs_band;
     }
     
-    //All Callsigns for a specific contest
-    public HashMap<String, Integer> getAllCS_Bands(int contestId) {
-        HashMap <String, Integer> cs_band = new HashMap<String, Integer>();
-        
+    //Convenience method to return an array of all distinct callsigns
+    public ArrayList<String> getDistinctCallSigns() {
+        ArrayList<String> al_cs = new ArrayList<String>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("select callsign,band_id from qsos where contest_id="+contestId);
-            while (rs.next()) {
-                cs_band.put(rs.getString("callsign"), rs.getInt("band_id"));
+            ResultSet rs_callsign = statement.executeQuery("select distinct callsign from qsos");
+            while (rs_callsign.next()) {
+                al_cs.add(rs_callsign.getString("callsign"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
-        return cs_band;
+        return al_cs;
     }
 }

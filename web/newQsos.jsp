@@ -40,23 +40,29 @@
                     var modeMatchFound = 0;
                     var bandMatchFound = 0;
                     
-                    alert("current Mode = " + currentMode + "\ncurrent Band = " + currentBand);
-                    
+                    // >>>>>>>>>>>>>>>>>>> Check all Modes <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
                     var csm = ${cs};
                     var keysArray = new Array();
                     for (var key in csm) {
                         keysArray.push(key);
                     }  
-                    
                     var i = 0;
                     while (i < keysArray.length) {
-                        if ( (csToCheck === keysArray[i]) && (currentMode === csm[keysArray[i]]) ) {
-                            modeMatchFound = 1;
-                            break;
+                        //put a foreach against the array in the val
+                        var ii = 0;
+                        while (ii < csm[keysArray[i]].length) {
+                            if ( (csToCheck === keysArray[i]) && (currentMode === csm[keysArray[i]][ii]) ) {
+                                //alert("Match for Mode found");
+                                modeMatchFound = 1;
+                                break;
+                            }
+                            ii++;
                         }
                         i++;
+                        if (modeMatchFound > 0) { break; }
                     }
                     
+                    // >>>>>>>>>>>>>>>>>>> Check all Bands <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
                     var csb = ${csbd};
                     var bandArray = new Array();
                     for (var key in csb) {
@@ -64,22 +70,24 @@
                     }
                     var j = 0;
                     while (j < bandArray.length) {
-                        alert("Checking - " + csb[bandArray[j]] + " Length of Array = " + bandArray.length);
-                        if ( (csToCheck === bandArray[j]) && (currentBand === csb[bandArray[j]]) ) {
-                            bandMatchFound = 1;
-                            break;
+                        var jj = 0;
+                        while (jj < csb[bandArray[j]].length) {
+                            if ( (csToCheck === bandArray[j]) && (currentBand === csb[bandArray[j]][jj]) ) {
+                                //alert("Match for Band found");
+                                bandMatchFound = 1;
+                                break;
+                            }
+                            jj++;
                         }
                         j++;
+                        if (bandMatchFound > 0) { break; }
                     }
                     
-                    alert("modeMatch = " + modeMatchFound + "\nbandMatch = " + bandMatchFound);
-                    
+                    //alert("modeMatch = " + modeMatchFound + "\nbandMatch = " + bandMatchFound);
                     if ((modeMatchFound > 0) && (bandMatchFound > 0)) {
                         alert("\t**WARNING**\n\nYou have worked \"" + csToCheck + "\" using " + currentMode + " on " + currentBand + " previously!");
                     }
-                    
                 });
-                
                 
                 $("#freq").change(function() {
                     var bandArray = ${bd};

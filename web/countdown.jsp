@@ -16,7 +16,7 @@ var note="No Contest At Present!";	/* -->Enter what you want the script to
     //Look for active contest
     ContestDao cdao = new ContestDao();
     int contId = cdao.getcurrentContestID();
-    System.out.println("ContestID = " + contId);
+    //System.out.println("ContestID = " + contId);
     
     if (contId > 0) {
         Contest contest = cdao.getContestById(contId);

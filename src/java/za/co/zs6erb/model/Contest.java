@@ -2,6 +2,8 @@ package za.co.zs6erb.model;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import za.co.zs6erb.dao.ProvinceCodeDao;
+import za.co.zs6erb.dao.StationClassDao;
 
 /**
  *
@@ -64,13 +66,29 @@ public class Contest {
     
     public int getstationClass() { return stationClass; }
     public void setstationClass(int stationClass) { this.stationClass = stationClass; }
+    public String getstationClassName() {
+        String statClass = "";
+        StationClassDao sdao = new StationClassDao();
+        StationClass sType = new StationClass();
+        sType = sdao.getSCById(stationClass);
+        statClass = "(" + sType.getclassLetter() + ") " + sType.getclassName();
+        return statClass;
+    }
     
     public int getprovinceCode() { return provinceCode; }
     public void setprovinceCode(int provinceCode) { this.provinceCode = provinceCode; }
+    public String getprovinceCodeName() {
+        String provName = "";
+        ProvinceCodeDao pdao = new ProvinceCodeDao();
+        ProvinceCode pc = new ProvinceCode();
+        pc = pdao.getPCById(provinceCode);
+        provName = "(" + pc.getprovinceCode() + ") " + pc.getprovinceName();
+        return provName;
+    }
     
     @Override
     public String toString() {
         return "Contest [contest_id=" + contest_id + ", Contest Name=" + contestName + ", Start Date=" + startDate + 
-                ", End Date=" + endDate + "]";
+                ", End Date=" + endDate + ", Province Code=" + provinceCode + ", StationClass=" + stationClass + "]";
     } 
 }

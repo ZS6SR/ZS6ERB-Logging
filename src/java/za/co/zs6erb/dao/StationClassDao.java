@@ -96,7 +96,7 @@ public class StationClassDao {
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
-                lSc.setID(rs.getInt("stationClasses_id"));
+                lSc.setID(rs.getInt("stationClass_id"));
                 lSc.setclassName(rs.getString("className"));
                 lSc.setclassLetter(rs.getString("classLetter"));
             }
