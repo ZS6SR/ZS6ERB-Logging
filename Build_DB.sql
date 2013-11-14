@@ -31,7 +31,7 @@ DROP TABLE IF EXISTS `power`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `power` (
   `power_id` int(11) NOT NULL AUTO_INCREMENT,
-  `power` varchar(45) DEFAULT NULL,
+  `powerName` varchar(45) DEFAULT NULL,
   `powerMultiplier` int(11) default '1',
   PRIMARY KEY (`power_id`),
   UNIQUE KEY `power_id_UNIQUE` (`power_id`)
@@ -44,7 +44,7 @@ CREATE TABLE `power` (
 
 LOCK TABLES `power` WRITE;
 /*!40000 ALTER TABLE `power` DISABLE KEYS */;
-INSERT INTO `power` VALUES (1,'< 5W', '6'),(2, '< 50W', '4'), (3, '< 100W', '2'), (4, '> 100W', '1');
+INSERT INTO `power` VALUES (1,'Less than 5W', '6'),(2, 'Less than 50W', '4'), (3, 'Less than 100W', '2'), (4, 'More than 100W', '1');
 /*!40000 ALTER TABLE `power` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -229,6 +229,7 @@ CREATE TABLE `contests` (
   `province_id` int(11) DEFAULT NULL,
   `stationClass_id` int(11) DEFAULT NULL, 
   `contest_start_qso` int(11) DEFAULT NULL,
+  `power_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`contest_id`),
   UNIQUE KEY `contest_id_UNIQUE` (`contest_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

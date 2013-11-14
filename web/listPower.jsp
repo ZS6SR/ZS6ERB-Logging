@@ -42,7 +42,7 @@
                 <c:forEach items="${power}" var="p">
                     <tr>
                         <td><c:out value="${p.ID}" /></td>
-                        <td><c:out value="${p.power}" /></td>
+                        <td><c:out value="${p.powerName}" /></td>
                         <td><c:out value="${p.pmultiplier}" /></td>
                         <td style="text-align: center;"><a href="PowerController?action=edit&power_id=<c:out value="${p.ID}" />">Update</a></td>
                         <td style="text-align: center;"><a href="PowerController?action=delete&power_id=<c:out value="${p.ID}" />">Delete</a></td>

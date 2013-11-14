@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import za.co.zs6erb.dao.ContestDao;
+import za.co.zs6erb.dao.PowerDao;
 import za.co.zs6erb.dao.ProvinceCodeDao;
 import za.co.zs6erb.dao.StationClassDao;
 import za.co.zs6erb.model.Contest;
@@ -26,21 +27,24 @@ import za.co.zs6erb.model.Contest;
 public class ContestsController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static String INSERT_OR_EDIT = "eContests.jsp";
-    private static String LIST_CONTESTS = "listContests.jsp";
-    private ContestDao dao;
-    private ProvinceCodeDao pdao;
-    private StationClassDao sType;
+    private static final String INSERT_OR_EDIT = "eContests.jsp";
+    private static final String LIST_CONTESTS = "listContests.jsp";
+    private final ContestDao dao;
+    private final ProvinceCodeDao pdao;
+    private final StationClassDao sType;
+    private final PowerDao pwrDao;
     
     public ContestsController() {
         super();
         dao = new ContestDao();
         pdao = new ProvinceCodeDao();
         sType = new StationClassDao();
+        pwrDao = new PowerDao();
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String forward = "";
+        String forward;
         String action = request.getParameter("action");
 
         if (action.equalsIgnoreCase("delete")) {
@@ -55,15 +59,15 @@ public class ContestsController extends HttpServlet {
             request.setAttribute("contest", contest);
             request.setAttribute("provinces", pdao);
             request.setAttribute("statClasses", sType);
+            request.setAttribute("power", pwrDao);
         } else if (action.equalsIgnoreCase("listContests")) {
             forward = LIST_CONTESTS;
             request.setAttribute("contests", dao.getAllContests());
-            request.setAttribute("provinces", pdao);
-            request.setAttribute("statClasses", sType);
         } else {
             forward = INSERT_OR_EDIT;
             request.setAttribute("provinces", pdao);
             request.setAttribute("statClasses", sType);
+            request.setAttribute("power", pwrDao);
         }
 
         RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -96,6 +100,10 @@ public class ContestsController extends HttpServlet {
                 //use Station Class Id and insert it into db
                 contest.setstationClass(Integer.parseInt(request.getParameter("stationClass_id")));
                 
+                //use Power Id and insert it into db
+                contest.setpower(Integer.parseInt(request.getParameter("power_id")));
+                System.out.println("POWERID = " + request.getParameter("power_id"));
+                
                 if (contest_id == null || contest_id.isEmpty()) {
                     dao.addContest(contest);
                 } else {
@@ -106,6 +114,7 @@ public class ContestsController extends HttpServlet {
                 request.setAttribute("contests", dao.getAllContests());
                 request.setAttribute("provinces", pdao);
                 request.setAttribute("statClasses", sType);
+                request.setAttribute("power", pwrDao);
                 view.forward(request, response);
             }
             else {
@@ -114,6 +123,7 @@ public class ContestsController extends HttpServlet {
                 request.setAttribute("contests", dao.getAllContests());
                 request.setAttribute("provinces", pdao);
                 request.setAttribute("statClasses", sType);
+                request.setAttribute("power", pwrDao);
                 view.forward(request, response);
             }
         } catch (ParseException ex) {
@@ -122,6 +132,7 @@ public class ContestsController extends HttpServlet {
             request.setAttribute("contests", dao.getAllContests());
             request.setAttribute("provinces", pdao);
             request.setAttribute("statClasses", sType);
+            request.setAttribute("power", pwrDao);
             view.forward(request, response);
         }
     }

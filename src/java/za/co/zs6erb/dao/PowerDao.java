@@ -29,9 +29,9 @@ public class PowerDao {
     public void addPower(Power power) {
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("insert into power(power, powerMultiplier) values (?,?)");
+                    .prepareStatement("insert into power(powerName, powerMultiplier) values (?,?)");
             // Parameters start with 1
-            preparedStatement.setString(1, power.getpower());
+            preparedStatement.setString(1, power.getpowerName());
             preparedStatement.setInt(2, power.getpmultiplier());
             preparedStatement.executeUpdate();
 
@@ -56,9 +56,9 @@ public class PowerDao {
     public void updatePower(Power power) {
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("update power set power=?, powerMultiplier=? where power_id=?");
+                    .prepareStatement("update power set powerName=?, powerMultiplier=? where power_id=?");
             // Parameters start with 1
-            preparedStatement.setString(1, power.getpower());
+            preparedStatement.setString(1, power.getpowerName());
             preparedStatement.setInt(2, power.getpmultiplier());
             preparedStatement.setInt(3, power.getID());
             preparedStatement.executeUpdate();
@@ -76,7 +76,7 @@ public class PowerDao {
             while (rs.next()) {
                 Power lPower = new Power();
                 lPower.setID(rs.getInt("power_id"));
-                lPower.setpower(rs.getString("power"));
+                lPower.setpowerName(rs.getString("powerName"));
                 lPower.setpmultiplier(rs.getInt("powerMultiplier"));
                 usrList.add(lPower);
             }
@@ -97,7 +97,7 @@ public class PowerDao {
 
             if (rs.next()) {
                 lPower.setID(rs.getInt("power_id"));
-                lPower.setpower(rs.getString("power"));
+                lPower.setpowerName(rs.getString("powerName"));
                 lPower.setpmultiplier(rs.getInt("powerMultiplier"));
             }
         } catch (SQLException e) {

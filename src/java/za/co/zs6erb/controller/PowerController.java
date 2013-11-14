@@ -58,7 +58,7 @@ public class PowerController extends HttpServlet {
     //When adding a new record or updating an existing record
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Power power = new Power();
-        power.setpower(request.getParameter("power"));
+        power.setpowerName(request.getParameter("power"));
         power.setpmultiplier(Integer.parseInt(request.getParameter("powerMultiplier")));
         String power_id = request.getParameter("power_id");
         if (power_id == null || power_id.isEmpty()) {

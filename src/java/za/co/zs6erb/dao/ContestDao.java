@@ -33,13 +33,14 @@ public class ContestDao {
     
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("insert into contests(contest_name, contest_startdate, contest_enddate, province_id, stationClass_id) values (?,?,?,?,?)");
+                    .prepareStatement("insert into contests(contest_name, contest_startdate, contest_enddate, province_id, stationClass_id, power_id) values (?,?,?,?,?,?)");
             // Parameters start with 1
             preparedStatement.setString(1, cont.getcontestName());
             preparedStatement.setTimestamp(2, sqlStartDate);
             preparedStatement.setTimestamp(3, sqlEndDate);
             preparedStatement.setInt(4, cont.getprovinceCode());
             preparedStatement.setInt(5, cont.getstationClass());
+            preparedStatement.setInt(6, cont.getpower());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -66,14 +67,15 @@ public class ContestDao {
     
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("update contests set contest_name=?, contest_startdate=?, contest_enddate=?, province_id=?, stationClass_id=? where contest_id=?");
+                    .prepareStatement("update contests set contest_name=?, contest_startdate=?, contest_enddate=?, province_id=?, stationClass_id=?, power_id=? where contest_id=?");
             // Parameters start with 1
             preparedStatement.setString(1, contest.getcontestName());
             preparedStatement.setTimestamp(2, sqlStartDate);
             preparedStatement.setTimestamp(3, sqlEndDate);
             preparedStatement.setInt(4, contest.getprovinceCode());
             preparedStatement.setInt(5, contest.getstationClass());
-            preparedStatement.setInt(6, contest.getID());
+            preparedStatement.setInt(6, contest.getpower());
+            preparedStatement.setInt(7, contest.getID());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -94,6 +96,7 @@ public class ContestDao {
                 lCont.setendDate(rs.getTimestamp("contest_enddate"));
                 lCont.setprovinceCode(rs.getInt("province_id"));
                 lCont.setstationClass(rs.getInt("stationClass_id"));
+                lCont.setpower(rs.getInt("power_id"));
                 contList.add(lCont);
             }
         } catch (SQLException e) {
@@ -118,6 +121,7 @@ public class ContestDao {
                 lCont.setendDate(rs.getTimestamp("contest_enddate"));
                 lCont.setprovinceCode(rs.getInt("province_id"));
                 lCont.setstationClass(rs.getInt("stationClass_id"));
+                lCont.setpower(rs.getInt("power_id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

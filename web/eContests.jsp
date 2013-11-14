@@ -56,6 +56,16 @@
                     <td style="width: 180px;"><input type="text" name="contestEndDate" id="contestEndDate" value="<c:out value="${contest.endDate}" />" /></td>
                 </tr>
                 <tr>
+                    <td style="text-align: right; width: 150px;">Default Power :</td>
+                    <td style="width: 250px;">
+                        <select name="power_id" id="power_id" style="font-size: 12px; width:175px; border: hidden; padding: 4px;">
+                            <c:forEach items="${power.getAllPower()}" var="eachPower" >
+                                <option value="<c:out value="${eachPower.ID}" />"> <c:out value="${eachPower.powerName}"/> </option>
+                            </c:forEach>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
                     <td style="text-align: right; width: 150px;">Province :</td>
                     <td style="width: 250px;">
                         <select name="provinceCode_id" id="provinceCode_id" style="font-size: 12px; width:175px; border: hidden; padding: 4px;">
@@ -67,7 +77,7 @@
                 </tr>
                 <tr>
                     <td style="text-align: right; width: 150px;">Station Class :</td>
-                    <td style="width: 250px;">
+                    <td style="width: 350px;">
                         <select name="stationClass_id" id="stationClass_id" style="font-size: 12px; width:175px; border: hidden; padding: 4px;">
                             <c:forEach items="${statClasses.getAllStationClasses()}" var="eachClass" >
                                 <option value="<c:out value="${eachClass.ID}" />"> (<c:out value="${eachClass.classLetter}"/>) <c:out value="${eachClass.className}"/> </option>
