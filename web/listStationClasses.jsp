@@ -42,7 +42,7 @@
                 <c:forEach items="${stationClasses}" var="sts">
                     <tr>
                         <td><c:out value="${sts.ID}" /></td>
-                        <td style="text-align: center;"><c:out value="${sts.className}" /></td>
+                        <td><c:out value="${sts.className}" /></td>
                         <td style="text-align: center;"><c:out value="${sts.classLetter}" /></td>
                         <td style="text-align: center;"><a href="StationClassController?action=edit&sc_id=<c:out value="${sts.ID}" />">Update</a></td>
                         <td style="text-align: center;"><a href="StationClassController?action=delete&sc_id=<c:out value="${sts.ID}" />">Delete</a></td>

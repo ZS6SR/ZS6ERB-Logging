@@ -4,13 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group/>
         <group name="ZS6SR">
-            <file>file:/D:/development/private/ZS6ERB-Logging/web/allContactsDetail.jsp</file>
-            <file>file:/D:/development/private/ZS6ERB-Logging/web/index.jsp</file>
-            <file>file:/D:/development/private/ZS6ERB-Logging/web/countdown.jsp</file>
-            <file>file:/D:/development/private/ZS6ERB-Logging/src/java/za/co/zs6erb/dao/ContestDao.java</file>
-            <file>file:/D:/development/private/ZS6ERB-Logging/src/java/za/co/zs6erb/dao/ContactDao.java</file>
-            <file>file:/D:/development/private/ZS6ERB-Logging/src/java/za/co/zs6erb/dao/SummaryDao.java</file>
-            <file>file:/D:/development/private/ZS6ERB-Logging/src/java/db.properties</file>
+            <file>file:/C:/development/private/ZS6ERB-Logging/web/css/menu.css</file>
+            <file>file:/C:/development/private/ZS6ERB-Logging/web/css/summary.css</file>
+            <file>file:/C:/development/private/ZS6ERB-Logging/web/listQSOs.jsp</file>
+            <file>file:/C:/development/private/ZS6ERB-Logging/web/css/tables.css</file>
+            <file>file:/C:/development/private/ZS6ERB-Logging/web/newQsos.jsp</file>
+            <file>file:/C:/development/private/ZS6ERB-Logging/Build_DB.sql</file>
         </group>
     </open-files>
 </project-private>

@@ -74,7 +74,7 @@
                 <tr>
                     <td style="text-align: right; width: 150px;">User Type :</td>
                     <td style="width: 250px;">
-                        <select name="userType" id="userType" style="font-size: 12px; width:175px; border: hidden; padding: 4px;">
+                        <select name="userType" id="userType" style="font-size: 12px; width:155px; padding: 4px;">
                             <option value="1" selected="true"> User </option>
                             <option value="7"> Administrator </option>
                         </select>

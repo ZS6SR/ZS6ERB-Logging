@@ -132,47 +132,42 @@
         <jsp:include page="header.jsp" />
         <jsp:include page="menu.jsp" />
         <jsp:include page="countdown.jsp" />
-        
         <br />
         <form method="POST" action='QSOController' name="frmAddQSO">
             <input type="hidden" id="contest_id" name="contest_id" value="0" />
-            <table style="border-width: 0px; border: hidden; width: 70%;">
+            <table style="border-width: 1px; border: hidden; width: 100%;">
                 <tr>
-                    <td id="qsoCap" style="width: 200px; text-align: right;">Frequency&nbsp;</td>
-                    <td style="width: 10px;">&nbsp;</td>
-                    <td style="width: 200px;"><input type="text" id="freq" name="freq" tabindex="1" style="width:200px; border: solid #C0C0C0; font-size:20px; padding: 4px;"></td>
-                </tr><tr>
-                    <td id="qsoCap" style="width: 200px; text-align: right;">Band&nbsp;</td>
-                    <td style="width: 10px;">&nbsp;</td>
-                    <td>
-                        <input type="text" id="band" name="band" readonly style="width:200px; border: solid #C0C0C0; font-size:18px; padding: 4px;">
+                    <td id="qsoCap" style="width: 180px; text-align: right;">Frequency&nbsp;</td>
+                    <td style="width: 5px;">&nbsp;</td>
+                    <td style="width: 150px;"><input type="text" id="freq" name="freq" tabindex="1" style="width:150px; border: solid #C0C0C0; font-size:20px; padding: 4px;"></td>
+                    <td style="width: 5px;">&nbsp;</td>
+                    <td id="qsoCap" style="width: 180px; text-align: right;">Band&nbsp;</td>
+                    <td style="width: 5px;">&nbsp;</td>
+                    <td style="width: 150px;">
+                        <input type="text" id="band" name="band" readonly style="width:180px; border: solid #C0C0C0; font-size:18px; padding: 4px;">
                         <input type="hidden" id="bandid" name="bandid" value="1" />
                     </td>
-                </tr><tr>
-                    <td id="qsoCap" style="width: 200px; text-align: right;">Mode&nbsp;</td>
-                    <td style="width: 10px;">&nbsp;</td>
-                    <td><select name="modeid" id="modeid" tabindex="2" style="font-size: 18px; width:200px; border: hidden; padding: 4px;">
+                    <td style="width: 5px;">&nbsp;</td>
+                    <td id="qsoCap" style="width: 150px; text-align: right;">Mode&nbsp;</td>
+                    <td style="width: 5px;">&nbsp;</td>
+                    <td style="width: 150px;"><select name="modeid" id="modeid" tabindex="2" style="font-size: 18px; width:130px; padding: 4px;">
                             <c:forEach items="${modes.getAllModes()}" var="eachMode" >
                                 <option value="<c:out value="${eachMode.ID}" />"> <c:out value="${eachMode.mode}"/> </option>
                             </c:forEach>
                         </select>
                     </td>
                 </tr><tr>
-                    <td id="qsoCap" style="width: 200px; text-align: right;">Callsign&nbsp;</td>
-                    <td style="width: 10px;">&nbsp;</td>
-                    <td><input type="text" id="callsign" name="callsign" tabindex="3" style="width:200px; border: solid #C0C0C0; font-size:20px; padding: 4px;"></td>
-                </tr><tr>
-                    <td style="width:200px; text-align: right;">&nbsp;<input type="button" class="myButton" tabindex="4" onclick="myStartTime()" value="Start Time" /></td>
-                    <td style="width: 10px;">&nbsp;</td>
-                    <td><input type="text" id="startTime" name="startTime" readonly style="width:200px; border: solid #C0C0C0; font-size:18px; text-align: center; padding: 4px;"></td>
-                </tr><tr>
-                    <td id="qsoCap" style="width: 200px; text-align: right;">Name&nbsp;</td>
-                    <td style="width: 10px;">&nbsp;</td>
-                    <td><input type="text" id="name" name="name" tabindex="5" style="width:200px; border: solid #C0C0C0; font-size:20px; padding: 4px;"></td>
-                </tr><tr>
-                    <td id="qsoCap" style="width: 200px; text-align: right;">Local (My) RST&nbsp;</td>
-                    <td style="width: 10px;">&nbsp;</td>
-                    <td id="qsoCap" style="width: 200px; text-align: left;">
+                    <td id="qsoCap" style="width: 150px; text-align: right;">Callsign&nbsp;</td>
+                    <td style="width: 5px;">&nbsp;</td>
+                    <td><input type="text" id="callsign" name="callsign" tabindex="3" style="width:150px; border: solid #C0C0C0; font-size:20px; padding: 4px;"></td>
+                    <td style="width: 5px;">&nbsp;</td>
+                    <td style="width: 150px; text-align: right;">&nbsp;<input type="button" class="myBigButton" tabindex="4" onclick="myStartTime()" value="Start Time" /></td>
+                    <td style="width: 5px;">&nbsp;</td>
+                    <td><input type="text" id="startTime" name="startTime" readonly style="width:180px; border: solid #C0C0C0; font-size:18px; text-align: center; padding: 4px;"></td>
+                    <td style="width: 5px;">&nbsp;</td>
+                    <td id="qsoCap" style="width: 150px; text-align: right;">Local (My) RST&nbsp;</td>
+                    <td style="width: 5px;">&nbsp;</td>
+                    <td id="qsoCap" style="width: 150px; text-align: left;">
                         <select name="localR" id="localR">
                             <c:forEach var="i" begin="1" end="4">
                                 <option value="${i}">${i}</option>
@@ -193,9 +188,17 @@
                         </select>
                     </td>
                 </tr><tr>
-                    <td id="qsoCap" style="width: 200px; text-align: right;">Remote (His) RST&nbsp;</td>
-                    <td style="width: 10px;">&nbsp;</td>
-                    <td id="qsoCap" style="width: 200px; text-align: left;">
+                    <td id="qsoCap" style="width: 150px; text-align: right;">Name&nbsp;</td>
+                    <td style="width: 5px;">&nbsp;</td>
+                    <td><input type="text" id="name" name="name" tabindex="5" style="width:150px; border: solid #C0C0C0; font-size:20px; padding: 4px;"></td>
+                    <td style="width: 5px;">&nbsp;</td>
+                    <td id="qsoCap" style="width: 150px; text-align: right;">Location (QTH)&nbsp;</td>
+                    <td style="width: 5px;">&nbsp;</td>
+                    <td><input type="text" id="qth" name="qth" tabindex="6" style="width:180px; border: solid #C0C0C0; font-size:20px; padding: 4px;"></td>
+                    <td style="width: 5px;">&nbsp;</td>
+                    <td id="qsoCap" style="width: 180px; text-align: right;">Remote (His) RST&nbsp;</td>
+                    <td style="width: 5px;">&nbsp;</td>
+                    <td id="qsoCap" style="width: 150px; text-align: left;">
                         <select name="remoteR" id="remoteR">
                             <c:forEach var="i" begin="1" end="4">
                                 <option value="${i}">${i}</option>
@@ -216,19 +219,18 @@
                             </select>
                     </td>
                 </tr><tr>
-                    <td id="qsoCap" style="width: 200px; text-align: right;">Location (QTH)&nbsp;</td>
-                    <td style="width: 10px;">&nbsp;</td>
-                    <td><input type="text" id="qth" name="qth" tabindex="6" style="width:200px; border: solid #C0C0C0; font-size:20px; padding: 4px;"></td>
+                   <td>&nbsp;</td>
                 </tr><tr>
-                    <td colspan="3" style="text-align: center;"><textarea name="notes" rows="4" cols="60"></textarea></td>
+                    <td colspan="11" style="text-align: center;"><textarea name="notes" rows="4" cols="60"></textarea></td>
                 </tr><tr>
                     <td>&nbsp;</td>
-                    <td style="width: 10px;">&nbsp;</td>
+                    <td style="width: 5px;">&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td style="width:250px; text-align: right;" colspan="2"><input type="submit"  tabindex="7" class="myBigButton" value="End and Log" />&nbsp;</td>
-                    <td style="width:150px; text-align: left;">&nbsp;&nbsp;&nbsp;<input type="reset" class="myBigButton" value="Reset" /></td>
+                    <td style="width:250px; text-align: right;" colspan="5"><input type="submit"  tabindex="7" class="myBigButton" value="End and Log" />&nbsp;</td>
+                    <td style="width: 5px;">&nbsp;</td>
+                    <td style="width:150px; text-align: left;" colspan="5">&nbsp;&nbsp;&nbsp;<input type="reset" class="myBigButton" value="Reset" /></td>
                 </tr>
             </table>
         </form>
